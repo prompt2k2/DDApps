@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { SUBJECTS } from '@/access/catalogue'
-import { A_AN, ANIMALS, COMMON_WORDS, COUNTRIES, FRUITS, OPPOSITES, PAST_TENSES, PLURALS, WORDS } from './data'
+import { A_AN, ANIMALS, COMMON_WORDS, COUNTRIES, flagPhoto, FRUITS, LANGUAGES, OPPOSITES, PAST_TENSES, PLURALS, WORDS } from './data'
 import { UNCLEAR_EN } from './english'
 import { FACTS } from './facts'
 import type { Lang } from '@/i18n'
@@ -11,6 +11,7 @@ import { SPACE, WORLD_RECORDS } from './world-more'
 import { ANIMAL_HOMES } from '@/library/animals'
 import CREDITS from '@/library/photo-credits.json'
 import { PLACE_COUNTRIES, PLACES } from '@/library/places'
+import { PLANET_TEXT, PLANETS, planetPhoto } from '@/library/planets'
 
 // The content check: every lesson question must have exactly one right answer, and that answer must be true.
 // Each step's questions are made thousands of times and checked against an answer key written here, apart
@@ -97,6 +98,8 @@ const FIXED_KEY: Record<string, string> = {
   'Who was the first person to walk on the Moon?': 'Neil Armstrong', 'Which planet is farthest from the Sun?': 'Neptune',
   'Which star is closest to the Earth?': 'The Sun', 'What do we call a group of stars that makes a pattern in the sky?': 'A constellation',
   'Who was the first person to travel into space?': 'Yuri Gagarin',
+  'How many planets are in the Solar System?': 'Eight', 'Which planet has the most moons?': 'Saturn',
+  'Which two planets have no moon at all?': 'Mercury and Venus', 'How many moons does the Earth have?': 'One',
 }
 
 /** Works out a sum written as "a + b", "a − b", "a × b", "a ÷ b", "double n", "half of n", "1/d of n". */
@@ -184,6 +187,16 @@ function check(step: string, q: Question, lang: Lang): string | null {
     case 'capitals': {
       const c = COUNTRIES.find((x) => q.prompt === T.capitalOf(T.countries[x.id].name))
       return c && label(r) === T.countries[c.id].capital ? null : 'wrong capital'
+    }
+    case 'languages': {
+      const c = COUNTRIES.find((x) => q.prompt === T.whichLanguage(T.countries[x.id].name))
+      if (!c) return 'unknown country'
+      const rightNames = c.languages.map((code) => LANGUAGES[code][lang])
+      return rightNames.includes(label(r)) && !w.some((x) => rightNames.includes(label(x))) ? null : 'wrong language'
+    }
+    case 'demonyms': {
+      const c = COUNTRIES.find((x) => q.prompt === T.whichDemonym(T.countries[x.id].name))
+      return c && label(r) === T.countries[c.id].demonym && !w.some((x) => label(x) === T.countries[c.id].demonym) ? null : 'wrong demonym'
     }
     case 'places-where': {
       const place = PLACES.find((x) => x.id === photoId(q.visual))
@@ -366,7 +379,18 @@ describe('lesson content is right', () => {
       expect(new Set(names).size, lang).toBe(names.length)
       const countries = Object.values(T.countries).map((c) => c.name)
       expect(new Set(countries).size, lang).toBe(countries.length)
+      const demonyms = Object.values(T.countries).map((c) => c.demonym)
+      expect(new Set(demonyms).size, lang).toBe(demonyms.length)
+      for (const c of COUNTRIES) {
+        expect(T.countries[c.id].region.length > 1, `${lang} ${c.id}`).toBe(true)
+        expect(T.countries[c.id].demonym.length > 1, `${lang} ${c.id}`).toBe(true)
+      }
     }
+  })
+
+  it('every language a country speaks is in the LANGUAGES dictionary', () => {
+    const codes = new Set(COUNTRIES.flatMap((c) => c.languages))
+    expect([...codes].filter((code) => !LANGUAGES[code])).toEqual([])
   })
 
   it('every "Did you know?" fact is translated (not left in English)', () => {
@@ -382,22 +406,36 @@ describe('lesson content is right', () => {
   })
 
   it('every photo exists, has a free licence and a credit; every place and animal has its texts', () => {
-    const files = new Set(Object.keys(import.meta.glob('/public/photos/**/*.jpg')).map((f) => f.replace('/public/', '')))
+    const files = new Set(
+      Object.keys({ ...import.meta.glob('/public/photos/**/*.jpg'), ...import.meta.glob('/public/photos/**/*.png') }).map((f) => f.replace('/public/', '')),
+    )
     const credits = CREDITS as Record<string, { author: string; licence: string; source: string }>
-    for (const id of [...PLACES.map((x) => x.id), ...ANIMALS.map((a) => a.id)]) {
+    for (const id of [...PLACES.map((x) => x.id), ...ANIMALS.map((a) => a.id), ...PLANETS.map((p) => p.id)]) {
       expect(credits[id]?.source, id).toMatch(/^https:\/\/commons\.wikimedia\.org\//)
       expect(credits[id].licence, id).toMatch(/^(public domain|cc0|cc by(-sa)? \d)/i)
     }
     for (const x of PLACES) expect(files.has(`photos/places/${x.id}.jpg`), x.id).toBe(true)
     for (const a of ANIMALS) expect(files.has(`photos/animals/${a.id}.jpg`), a.id).toBe(true)
+    for (const p of PLANETS) expect(files.has(planetPhoto(p.id)), p.id).toBe(true)
     for (const lang of LANGS) {
       for (const x of PLACES) {
         expect(x.text[lang].name.length > 1 && x.text[lang].about.length > 20, `${lang} ${x.id}`).toBe(true)
         for (const c of x.countries) expect(PLACE_COUNTRIES[c][lang], c).toBeTruthy()
       }
       for (const a of ANIMALS) expect(ANIMAL_HOMES[a.id][lang].length > 3, `${lang} ${a.id}`).toBe(true)
+      for (const p of PLANETS) expect(PLANET_TEXT[p.id][lang].facts.every((f) => f.length > 10), `${lang} ${p.id}`).toBe(true)
       const names = PLACES.map((x) => x.text[lang].name)
       expect(new Set(names).size, lang).toBe(names.length)
+    }
+  })
+
+  it('every flag exists and has a free-licence credit', () => {
+    const files = new Set(Object.keys(import.meta.glob('/public/flags/**/*.svg')).map((f) => f.replace('/public/', '')))
+    const credits = CREDITS as Record<string, { author: string; licence: string; source: string }>
+    for (const c of COUNTRIES) {
+      expect(files.has(flagPhoto(c.id)), c.id).toBe(true)
+      expect(credits[`flag-${c.id}`]?.source, c.id).toMatch(/^https:\/\/commons\.wikimedia\.org\//)
+      expect(credits[`flag-${c.id}`]?.licence, c.id).toMatch(/^(public domain|cc0|cc by(-sa)? \d)/i)
     }
   })
 

@@ -25,8 +25,8 @@ export function LearnScreen() {
 
   return (
     <div className="games-screen">
-      {/* The library first: places and animals of the world. */}
-      {(['places', 'animals'] as const).map((id) => (
+      {/* The library first: places, animals, countries and planets. */}
+      {(['places', 'animals', 'countries', 'planets'] as const).map((id) => (
         <ItemTile key={id} id={id} className="game-card library-tile" onOpen={() => setShelf(id)}>
           <span className="game-learn">{t.itemLearn[id]}</span>
         </ItemTile>

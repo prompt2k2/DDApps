@@ -33,6 +33,8 @@ export interface LessonText {
   whichFlag: (country: string) => string
   whichContinent: (country: string) => string
   capitalOf: (country: string) => string
+  whichLanguage: (country: string) => string
+  whichDemonym: (country: string) => string
   whereIsPlace: string
   whatIsPlace: string
   minutesIn: (hours: number) => string
@@ -44,7 +46,7 @@ export interface LessonText {
   calc: (expr: string) => string
   /** Animal names and facts by animal id. A fact never names the animal. */
   animals: Record<string, { name: string; fact: string }>
-  countries: Record<string, { name: string; capital: string }>
+  countries: Record<string, { name: string; capital: string; region: string; demonym: string }>
   continents: Record<Continent, string>
   /** Skill names by ladder step id (for parents, and "Next up: …"). */
   skills: Record<string, string>
@@ -74,6 +76,8 @@ export const LESSON_EN: LessonText = {
   whichFlag: (c) => `Which flag belongs to ${c}?`,
   whichContinent: (c) => `Which continent is ${c} in?`,
   capitalOf: (c) => `What is the capital city of ${c}?`,
+  whichLanguage: (c) => `Which language is spoken in ${c}?`,
+  whichDemonym: (c) => `What are people from ${c} called?`,
   whereIsPlace: 'Which country is this place in?',
   whatIsPlace: 'What is this place called?',
   minutesIn: (h) => `How many minutes are in ${plural(h, 'hour', 'hours')}?`,
@@ -83,8 +87,8 @@ export const LESSON_EN: LessonText = {
   percentOf: (p, n) => `What is ${p}% of ${n}?`,
   calc: (e) => `What is ${e}?`,
   animals: Object.fromEntries(ANIMALS.map((a) => [a.id, { name: a.name, fact: a.fact }])),
-  countries: Object.fromEntries(COUNTRIES.map((c) => [c.id, { name: c.name, capital: c.capital }])),
-  continents: { Europe: 'Europe', Africa: 'Africa', Asia: 'Asia', 'South America': 'South America' },
+  countries: Object.fromEntries(COUNTRIES.map((c) => [c.id, { name: c.name, capital: c.capital, region: c.region, demonym: c.demonym }])),
+  continents: { Europe: 'Europe', Africa: 'Africa', Asia: 'Asia', 'North America': 'North America', 'South America': 'South America', Oceania: 'Oceania' },
   // English skill names live on the ladder steps themselves (step.skill).
   skills: {},
 }

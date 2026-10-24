@@ -1,8 +1,14 @@
 # Photos
 
-Real photos of places and animals from **Wikimedia Commons**, each under a free licence (public domain,
-CC0, CC BY or CC BY-SA), resized to 500 px wide. Downloaded with `scripts/fetch-photos.mjs`, which keeps only free
-licences and records the credits in `src/library/photo-credits.json` (the app shows the credit under each photo).
+Real photos of places, animals and planets from **Wikimedia Commons**, each under a free licence (public
+domain, CC0, CC BY or CC BY-SA), resized to 500 px wide (JPEG for ordinary photos, PNG for most astronomy
+images, as Commons hosts them). Downloaded with `scripts/fetch-photos.mjs`, which keeps only free licences
+and records the credits in `src/library/photo-credits.json` (the app shows the credit under each photo).
+
+Country flags are a separate set at `public/flags/<id>.svg` — the original vector file from Commons (not
+resized), downloaded with `scripts/fetch-flags.mjs`, credited under a `flag-<id>` key in the same
+`photo-credits.json` so it can't collide with a place or animal id. National flags are almost always public
+domain (simple government symbols) or released by their Commons uploader under a free licence.
 
 | Photo | Author | Licence | Source |
 |---|---|---|---|
@@ -86,3 +92,58 @@ licences and records the credits in `src/library/photo-credits.json` (the app sh
 | animals/seal.jpg | Charles J. Sharp | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Common_seal_(Phoca_vitulina)_2.jpg |
 | animals/swan.jpg | Sanchezn | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:CygneVaires.jpg |
 | animals/mouse.jpg | Unknown authorUnknown author (original) / Ilmari Karonen (editing) | Public domain | https://commons.wikimedia.org/wiki/File:Mouse_white_background.jpg |
+| planets/mercury.jpg | NASA/Johns Hopkins University Applied Physics Laboratory/Arizona State University/Carnegie Institution of Washington | Public domain | https://commons.wikimedia.org/wiki/File:Mercury_in_true_color.jpg |
+| planets/venus.jpg | NASA/JPL-Caltech | Public domain | https://commons.wikimedia.org/wiki/File:Venus_from_Mariner_10.jpg |
+| planets/earth.jpg | NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans | Public domain | https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg |
+| planets/mars.png | Kevin Gill from Los Angeles, CA, United States | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png |
+| planets/jupiter.png | NASA/STSCI (S.T.A.R.S) | Public domain | https://commons.wikimedia.org/wiki/File:Jupiter_OPAL_2024.png |
+| planets/saturn.png | NASA / JPL-Caltech / SSI / color composite by Gordan Ugarkovic | Public domain | https://commons.wikimedia.org/wiki/File:Saturn_global_view_from_Cassini,_rings_open_Better_Colour.png |
+| planets/uranus.png | Ardenau4 | CC0 | https://commons.wikimedia.org/wiki/File:Uranus_Voyager2_color_calibrated.png |
+| planets/neptune.png | NASA / Voyager 2 / PDS / OPUS / Ardenau4 | CC0 | https://commons.wikimedia.org/wiki/File:Neptune_Voyager2_color_calibrated.png |
+| planets/pluto.png | NASA/Johns Hopkins University Applied Physics Laboratory/Southwest Research Institute/Alex Parker | Public domain | https://commons.wikimedia.org/wiki/File:Pluto_in_True_Color_-_High-Res.png |
+| flags/ae.svg | Abdulla Mohammed Al Maainah | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_the_United_Arab_Emirates.svg |
+| flags/ar.svg | Manuel Belgrano | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Argentina.svg |
+| flags/at.svg | Bundesministerium für Landesverteidigung | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Austria.svg |
+| flags/au.svg | Original: Ivor Evans, Leslie John Hawkins, Egbert John Nuttall, Annie Dorrington and William Stevens Vector: Ian Fieggen | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Australia.svg |
+| flags/be.svg | Dbenbenn and others | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Belgium.svg |
+| flags/br.svg | Raimundo Teixeira Mendes | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Brazil.svg |
+| flags/ca.svg | Created by George F. G. Stanley / E Pluribus Anthony / User:Mzajac | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Canada.svg |
+| flags/ch.svg | Original: Unknown Vector: User:Marc Mongenet Credits: User:-xfi- User:Zscout370 | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Switzerland.svg |
+| flags/ci.svg | See File history below for details. | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_C%C3%B4te_d%27Ivoire.svg |
+| flags/cn.svg | Zeng Liansong | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_the_People%27s_Republic_of_China.svg |
+| flags/de.svg | User:SKopp, User:Madden, and other users | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Germany.svg |
+| flags/dk.svg | Madden and others | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Denmark.svg |
+| flags/ee.svg | Original: Unknown author Vector: SKopp, PeepP and ‍others | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Estonia.svg |
+| flags/eg.svg | See File history below for details. | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Egypt.svg |
+| flags/es.svg | RelShot 263, Echando una mano; earlier version was Pedro A. Gracia Fajardo, escudo de Manual de Imagen Institucional de | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Spain.svg |
+| flags/fi.svg | Unknown | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Finland.svg |
+| flags/fr.svg | Original: Unknown Vector: SKopp | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_France.svg |
+| flags/ga.svg | Léon Augé and Pierre Claver Eyeghe | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Gabon.svg |
+| flags/gb.svg | Original: Acts of Union 1800 Vector: Yaddah | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_the_United_Kingdom_(3-5).svg |
+| flags/gh.svg | Theodosia Okoh | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Ghana.svg |
+| flags/gn.svg | Unknown | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Guinea.svg |
+| flags/hu.svg | SKopp | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Hungary.svg |
+| flags/id.svg | Jayakatwang | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Indonesia.svg |
+| flags/ie.svg | Éire | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Ireland.svg |
+| flags/in.svg | Government of India | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_India.svg |
+| flags/it.svg | See below. | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Italy.svg |
+| flags/jp.svg | Various | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Japan.svg |
+| flags/ke.svg | User:Pumbaa80 | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Kenya.svg |
+| flags/kr.svg | Original: Government of the Republic of Korea Vector: Great Brightstar and others | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_South_Korea.svg |
+| flags/ma.svg | Denelson83, Zscout370 | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Morocco.svg |
+| flags/ml.svg | SKopp | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Mali.svg |
+| flags/mx.svg | Omar Alejandro Covarrubias Neri, 9 April 2006. Based on the 1968 arms by Francisco Eppens Helguera and Juan Manuel Gabino | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Mexico.svg |
+| flags/ng.svg | Jon Harald Søby. | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Nigeria.svg |
+| flags/nl.svg | Zscout370 | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_the_Netherlands.svg |
+| flags/nz.svg | Original: Albert Hastings Markham Vector: Zscout370, Hugh Jass, s. File history | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_New_Zealand.svg |
+| flags/pe.svg | David Benbennick | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Peru.svg |
+| flags/pl.svg | See below. | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Poland.svg |
+| flags/pt.svg | Original: Columbano Bordalo Pinheiro (1910; generic design) Vector: Vítor Luís Rodrigues; António Martins-Tuválkin (2004) | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Portugal.svg |
+| flags/se.svg | Jon Harald Søby and others. | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Sweden.svg |
+| flags/sl.svg | Zscout370 | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Sierra_Leone.svg |
+| flags/td.svg | SKopp & others (see upload log) | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Chad.svg |
+| flags/th.svg | Zscout370 | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Thailand.svg |
+| flags/ua.svg | Government of Ukraine | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_Ukraine.svg |
+| flags/us.svg | Uploaded by Dbenbenn; edited by users such as Zscout370, Jacobolus, Indolences, and Technion. | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_the_United_States.svg |
+| flags/ye.svg | 愛喝奶茶 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Flag_of_Yemen.svg |
+| flags/za.svg | Flag design by Frederick Brownell, image by Wikimedia Commons users | Public domain | https://commons.wikimedia.org/wiki/File:Flag_of_South_Africa.svg |

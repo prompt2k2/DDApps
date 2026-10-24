@@ -3,19 +3,21 @@ import { useState } from 'react'
 import { StatusBar } from '@/app/Shell'
 import { sayText, useCanSpeak } from '@/audio/say'
 import { type Lang, useLang, useT } from '@/i18n'
-import { ANIMALS } from '@/lessons/data'
+import { ANIMALS, COUNTRIES, flagPhoto, LANGUAGES } from '@/lessons/data'
 import { lessonText } from '@/lessons/text'
 import { useArea } from '@/progress/usage'
 import { Emoji } from '@/shared/Emoji'
 import { ANIMAL_HOMES, animalPhoto } from './animals'
 import CREDITS from './photo-credits.json'
 import { PLACE_COUNTRIES, PLACES, placeCountry, placePhoto } from './places'
+import { PLANET_TEXT, PLANETS, planetPhoto } from './planets'
 import './Library.css'
 
-// The library: animals and places of the world, each with a real photo, a few true sentences that can be
-// read aloud, and the photo's credit (Wikimedia Commons, free licences).
+// The library: animals, places, countries and planets, each with a real photo, a few true sentences that can
+// be read aloud, and the photo's credit (Wikimedia Commons, free licences).
 
-export type Shelf = 'animals' | 'places'
+export type Shelf = 'animals' | 'places' | 'countries' | 'planets'
+const SHELF_EMOJI: Record<Shelf, string> = { animals: 'paws', places: 'map', countries: 'globe', planets: 'moon' }
 
 interface Entry {
   id: string
@@ -24,6 +26,8 @@ interface Entry {
   /** Under the name in the grid (the country of a place). */
   sub?: string
   lines: { label?: string; text: string }[]
+  /** A flag (wide, flat colours): shown whole (object-fit: contain) instead of cropped like a photo. */
+  flag?: boolean
 }
 
 /** "manchot" → "Manchot", as a title (German nouns already start with a capital). */
@@ -41,6 +45,43 @@ function entries(shelf: Shelf, lang: Lang, country: string | null, t: ReturnType
       lines: [{ text: T.animals[a.id].fact }, { label: t.library.lives, text: ANIMAL_HOMES[a.id][lang] }],
     })).sort((a, b) => a.name.localeCompare(b.name, lang))
   }
+  if (shelf === 'countries') {
+    const T = lessonText(lang)
+    return COUNTRIES.map((c) => {
+      const region = T.countries[c.id].region
+      const continent = T.continents[c.continent]
+      const where = region === continent ? continent : `${region}, ${continent}`
+      return {
+        id: c.id,
+        photo: flagPhoto(c.id),
+        name: T.countries[c.id].name,
+        sub: where,
+        flag: true,
+        lines: [
+          { label: t.library.continent, text: where },
+          { label: t.library.languages, text: c.languages.map((code) => LANGUAGES[code][lang]).join(', ') },
+          { label: t.library.peopleCalled, text: T.countries[c.id].demonym },
+          { label: t.library.capitalCity, text: T.countries[c.id].capital },
+        ],
+      }
+    }).sort((a, b) => a.name.localeCompare(b.name, lang))
+  }
+  if (shelf === 'planets') {
+    return PLANETS.map((p) => {
+      const text = PLANET_TEXT[p.id][lang]
+      return {
+        id: p.id,
+        photo: planetPhoto(p.id),
+        name: text.name,
+        sub: p.dwarf ? t.library.dwarfPlanet : t.library.orderFromSun(p.order!),
+        lines: [
+          { label: t.library.moons, text: p.moons === 0 ? t.library.noMoons : t.library.moonCount(p.moons) },
+          { text: text.facts[0] },
+          { text: text.facts[1] },
+        ],
+      }
+    })
+  }
   return PLACES.filter((p) => !country || p.countries.includes(country))
     .map((p) => ({ id: p.id, photo: placePhoto(p.id), name: p.text[lang].name, sub: placeCountry(p, lang), lines: [{ label: t.library.country, text: placeCountry(p, lang) }, { text: p.text[lang].about }] }))
     .sort((a, b) => a.name.localeCompare(b.name, lang))
@@ -56,7 +97,7 @@ export function LibraryScreen({ shelf, onClose }: { shelf: Shelf; onClose: () =>
   const countries = Object.keys(PLACE_COUNTRIES)
     .filter((c) => PLACES.some((p) => p.countries.includes(c)))
     .sort((a, b) => PLACE_COUNTRIES[a][lang].localeCompare(PLACE_COUNTRIES[b][lang], lang))
-  const title = shelf === 'animals' ? t.items.animals : t.items.places
+  const title = t.items[shelf]
 
   return (
     <div className="mission-screen library-screen">
@@ -67,7 +108,7 @@ export function LibraryScreen({ shelf, onClose }: { shelf: Shelf; onClose: () =>
               <ArrowLeft /> <span>{t.common.back}</span>
             </button>
             <h2>
-              <Emoji name={shelf === 'animals' ? 'paws' : 'map'} size={40} /> {title}
+              <Emoji name={SHELF_EMOJI[shelf]} size={40} /> {title}
             </h2>
           </>
         }
@@ -91,7 +132,7 @@ export function LibraryScreen({ shelf, onClose }: { shelf: Shelf; onClose: () =>
           <div className="library-grid">
             {list.map((e, i) => (
               <button key={e.id} className="card library-card" onClick={() => setOpen(i)}>
-                <img src={`${import.meta.env.BASE_URL}${e.photo}`} alt="" loading="lazy" />
+                <img src={`${import.meta.env.BASE_URL}${e.photo}`} alt="" loading="lazy" className={e.flag ? 'flag-photo' : ''} />
                 <b>{e.name}</b>
                 {e.sub && <small>{e.sub}</small>}
               </button>
@@ -112,7 +153,7 @@ function Detail({ entry, onPrev, onNext }: { entry: Entry; onPrev: () => void; o
   return (
     <section className="card library-detail">
       <figure>
-        <img src={`${import.meta.env.BASE_URL}${entry.photo}`} alt={entry.name} />
+        <img src={`${import.meta.env.BASE_URL}${entry.photo}`} alt={entry.name} className={entry.flag ? 'flag-photo' : ''} />
         {credit && <figcaption>{t.library.photo(credit.author, credit.licence)}</figcaption>}
       </figure>
       <div className="library-text">

@@ -11,9 +11,11 @@ export const ITEM_IDS = [
   'patterns',
   // "Did you know?": a random fact about the world, science, nature, space or history.
   'facts',
-  // The library: animals and places of the world with real photos.
+  // The library: animals, places, countries and planets, with real photos.
   'animals',
   'places',
+  'countries',
+  'planets',
   // Our own games.
   'memory',
   'builder',
@@ -56,6 +58,8 @@ export const ITEMS: Record<ItemId, Item> = {
   facts: { id: 'facts', group: 'learning', emoji: 'light', ready: true, minAge: 4, starter: 'unlocked' },
   animals: { id: 'animals', group: 'learning', emoji: 'paws', ready: true, minAge: 4, starter: 'unlocked' },
   places: { id: 'places', group: 'learning', emoji: 'map', ready: true, minAge: 5, starter: 'unlocked' },
+  countries: { id: 'countries', group: 'learning', emoji: 'globe', ready: true, minAge: 5, starter: 'unlocked' },
+  planets: { id: 'planets', group: 'learning', emoji: 'moon', ready: true, minAge: 5, starter: 'unlocked' },
   memory: { id: 'memory', group: 'games', emoji: 'joystick', ready: true, minAge: 4, starter: 'locked' },
   builder: { id: 'builder', group: 'games', emoji: 'memo', ready: true, minAge: 5, starter: 'locked' },
   puzzle: { id: 'puzzle', group: 'games', emoji: 'framed', ready: true, minAge: 4, starter: 'locked' },

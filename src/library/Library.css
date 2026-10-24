@@ -36,6 +36,14 @@
   border-radius: var(--radius-s);
   background: var(--sunken);
 }
+/* Flags are wide and flat-coloured: show the whole thing, not a cropped sliver. */
+.library-card img.flag-photo,
+.library-detail img.flag-photo {
+  object-fit: contain;
+  background: var(--card);
+  border: 1px solid rgb(0 0 0 / 14%);
+  padding: 0.4rem;
+}
 .library-card b {
   font-family: var(--display);
   font-size: 1.1rem;

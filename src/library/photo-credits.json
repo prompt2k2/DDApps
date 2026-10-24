@@ -478,5 +478,335 @@
     "licence": "CC BY-SA 4.0",
     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Red_Kangaroos_at_Sturt_National_Park_NSW.jpg"
+  },
+  "flag-de": {
+    "author": "User:SKopp, User:Madden, and other users",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Germany.svg"
+  },
+  "flag-fr": {
+    "author": "Original: Unknown Vector: SKopp",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_France.svg"
+  },
+  "flag-it": {
+    "author": "See below.",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Italy.svg"
+  },
+  "flag-ie": {
+    "author": "Éire",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Ireland.svg"
+  },
+  "flag-be": {
+    "author": "Dbenbenn and others",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Belgium.svg"
+  },
+  "flag-at": {
+    "author": "Bundesministerium für Landesverteidigung",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Austria.svg"
+  },
+  "flag-nl": {
+    "author": "Zscout370",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Netherlands.svg"
+  },
+  "flag-pl": {
+    "author": "See below.",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Poland.svg"
+  },
+  "flag-ua": {
+    "author": "Government of Ukraine",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Ukraine.svg"
+  },
+  "flag-hu": {
+    "author": "SKopp",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Hungary.svg"
+  },
+  "flag-ee": {
+    "author": "Original: Unknown author Vector: SKopp, PeepP and ‍others",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Estonia.svg"
+  },
+  "flag-se": {
+    "author": "Jon Harald Søby and others.",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Sweden.svg"
+  },
+  "flag-dk": {
+    "author": "Madden and others",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Denmark.svg"
+  },
+  "flag-fi": {
+    "author": "Unknown",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Finland.svg"
+  },
+  "flag-ch": {
+    "author": "Original: Unknown Vector: User:Marc Mongenet Credits: User:-xfi- User:Zscout370",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Switzerland.svg"
+  },
+  "flag-gb": {
+    "author": "Original: Acts of Union 1800 Vector: Yaddah",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_the_United_Kingdom_(3-5).svg"
+  },
+  "flag-es": {
+    "author": "RelShot 263, Echando una mano; earlier version was Pedro A. Gracia Fajardo, escudo de Manual de Imagen Institucional de ",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Spain.svg"
+  },
+  "flag-pt": {
+    "author": "Original: Columbano Bordalo Pinheiro (1910; generic design) Vector: Vítor Luís Rodrigues; António Martins-Tuválkin (2004",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Portugal.svg"
+  },
+  "flag-ng": {
+    "author": "Jon Harald Søby.",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Nigeria.svg"
+  },
+  "flag-ml": {
+    "author": "SKopp",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Mali.svg"
+  },
+  "flag-gn": {
+    "author": "Unknown",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Guinea.svg"
+  },
+  "flag-td": {
+    "author": "SKopp &amp; others (see upload log)",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Chad.svg"
+  },
+  "flag-ci": {
+    "author": "See File history below for details.",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_C%C3%B4te_d%27Ivoire.svg"
+  },
+  "flag-sl": {
+    "author": "Zscout370",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Sierra_Leone.svg"
+  },
+  "flag-ga": {
+    "author": "Léon Augé and Pierre Claver Eyeghe",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Gabon.svg"
+  },
+  "flag-eg": {
+    "author": "See File history below for details.",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Egypt.svg"
+  },
+  "flag-gh": {
+    "author": "Theodosia Okoh",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Ghana.svg"
+  },
+  "flag-ke": {
+    "author": "User:Pumbaa80",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Kenya.svg"
+  },
+  "flag-za": {
+    "author": "Flag design by Frederick Brownell, image by Wikimedia Commons users",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_South_Africa.svg"
+  },
+  "flag-ma": {
+    "author": "Denelson83, Zscout370",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Morocco.svg"
+  },
+  "flag-jp": {
+    "author": "Various",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Japan.svg"
+  },
+  "flag-id": {
+    "author": "Jayakatwang",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Indonesia.svg"
+  },
+  "flag-th": {
+    "author": "Zscout370",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Thailand.svg"
+  },
+  "flag-ye": {
+    "author": "愛喝奶茶",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Yemen.svg"
+  },
+  "flag-cn": {
+    "author": "Zeng Liansong",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_the_People%27s_Republic_of_China.svg"
+  },
+  "flag-in": {
+    "author": "Government of India",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_India.svg"
+  },
+  "flag-ae": {
+    "author": "Abdulla Mohammed Al Maainah",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_the_United_Arab_Emirates.svg"
+  },
+  "flag-kr": {
+    "author": "Original: Government of the Republic of Korea Vector: Great Brightstar and others",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_South_Korea.svg"
+  },
+  "flag-us": {
+    "author": "Uploaded by Dbenbenn; edited by users such as Zscout370, Jacobolus, Indolences, and Technion.",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_the_United_States.svg"
+  },
+  "flag-ca": {
+    "author": "Created by George F. G. Stanley / E Pluribus Anthony / User:Mzajac",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Canada.svg"
+  },
+  "flag-mx": {
+    "author": "Omar Alejandro Covarrubias Neri, 9 April 2006. Based on the 1968 arms by Francisco Eppens Helguera and Juan Manuel Gabin",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Mexico.svg"
+  },
+  "flag-pe": {
+    "author": "David Benbennick",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Peru.svg"
+  },
+  "flag-br": {
+    "author": "Raimundo Teixeira Mendes",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Brazil.svg"
+  },
+  "flag-ar": {
+    "author": "Manuel Belgrano",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Argentina.svg"
+  },
+  "flag-au": {
+    "author": "Original: Ivor Evans, Leslie John Hawkins, Egbert John Nuttall, Annie Dorrington and William Stevens Vector: Ian Fieggen",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Australia.svg"
+  },
+  "flag-nz": {
+    "author": "Original: Albert Hastings Markham Vector: Zscout370, Hugh Jass, s. File history",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag_of_New_Zealand.svg"
+  },
+  "mercury": {
+    "author": "NASA/Johns Hopkins University Applied Physics Laboratory/Arizona State University/Carnegie Institution of Washington",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Mercury_in_true_color.jpg"
+  },
+  "venus": {
+    "author": "NASA/JPL-Caltech",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Venus_from_Mariner_10.jpg"
+  },
+  "earth": {
+    "author": "NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg"
+  },
+  "mars": {
+    "author": "Kevin Gill from Los Angeles, CA, United States",
+    "licence": "CC BY 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png"
+  },
+  "jupiter": {
+    "author": "NASA/STSCI (S.T.A.R.S)",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Jupiter_OPAL_2024.png"
+  },
+  "saturn": {
+    "author": "NASA / JPL-Caltech / SSI / color composite by Gordan Ugarkovic",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Saturn_global_view_from_Cassini,_rings_open_Better_Colour.png"
+  },
+  "uranus": {
+    "author": "Ardenau4",
+    "licence": "CC0",
+    "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Uranus_Voyager2_color_calibrated.png"
+  },
+  "neptune": {
+    "author": "NASA / Voyager 2 / PDS / OPUS / Ardenau4",
+    "licence": "CC0",
+    "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Neptune_Voyager2_color_calibrated.png"
+  },
+  "pluto": {
+    "author": "NASA/Johns Hopkins University Applied Physics Laboratory/Southwest Research Institute/Alex Parker",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Pluto_in_True_Color_-_High-Res.png"
   }
 }

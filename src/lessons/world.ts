@@ -1,4 +1,4 @@
-import { ANIMALS, CONTINENTS, COUNTRIES, type Country } from './data'
+import { ANIMALS, CONTINENTS, COUNTRIES, type Country, LANGUAGES } from './data'
 import { others, pick, type Question, type Random, shuffleIn } from './question'
 import type { Lang } from '@/i18n'
 import type { Step } from './step'
@@ -10,7 +10,7 @@ import { PLACE_COUNTRIES, PLACES, placePhoto } from '@/library/places'
 // World ladder: animals → where they live → flags → continents → capital cities.
 
 /** Flags that are easy to tell apart (different shapes or very different colours), for the first flag step. */
-const EASY_FLAGS = ['de', 'fr', 'it', 'jp', 'se', 'ch', 'ng', 'ua', 'pl', 'dk']
+const EASY_FLAGS = ['de', 'fr', 'it', 'jp', 'se', 'ch', 'ng', 'ua', 'pl', 'dk', 'us', 'gb', 'au']
 
 const sameCountry = (a: Country, b: Country) => a.id === b.id
 
@@ -79,6 +79,29 @@ function capital(r: Random, T: LessonText): Question {
   }
 }
 
+const LANGUAGE_CODES = Object.keys(LANGUAGES)
+
+/** A language actually spoken there, against two languages that are not (so there is only one right answer). */
+function language(r: Random, T: LessonText, lang: Lang): Question {
+  const c = pick(r, COUNTRIES)
+  const code = pick(r, c.languages)
+  const notSpoken = LANGUAGE_CODES.filter((x) => !c.languages.includes(x))
+  return {
+    prompt: T.whichLanguage(T.countries[c.id].name),
+    visual: { kind: 'flag', id: c.id },
+    ...shuffleIn(r, { label: LANGUAGES[code][lang] }, others(r, notSpoken, code, 2).map((x) => ({ label: LANGUAGES[x][lang] }))),
+  }
+}
+
+function demonym(r: Random, T: LessonText): Question {
+  const c = pick(r, COUNTRIES)
+  return {
+    prompt: T.whichDemonym(T.countries[c.id].name),
+    visual: { kind: 'flag', id: c.id },
+    ...shuffleIn(r, { label: T.countries[c.id].demonym }, others(r, COUNTRIES, c, 2, sameCountry).map((x) => ({ label: T.countries[x.id].demonym }))),
+  }
+}
+
 /** Places in one country only (a place on a border would have two right answers). */
 const ONE_COUNTRY = PLACES.filter((x) => x.countries.length === 1)
 
@@ -111,7 +134,9 @@ export const WORLD: Step[] = [
   { id: 'places-where', stage: 2, skill: 'Famous places: which country?', make: placeWhere },
   { id: 'continents', stage: 3, skill: 'Countries and continents', make: (r, l) => continent(r, lessonText(l)) },
   { id: 'places-name', stage: 3, skill: 'Naming famous places', make: placeName },
+  { id: 'languages', stage: 3, skill: 'Languages of the world', make: (r, l) => language(r, lessonText(l), l) },
   { id: 'capitals', stage: 4, skill: 'Capital cities', make: (r, l) => capital(r, lessonText(l)) },
+  { id: 'demonyms', stage: 4, skill: 'What people from a country are called', make: (r, l) => demonym(r, lessonText(l)) },
   { id: 'world-records', stage: 4, skill: 'Records of the Earth', make: (r, l) => fixedQuestion(r, WORLD_RECORDS, l) },
   { id: 'space', stage: 5, skill: 'Space', make: (r, l) => fixedQuestion(r, SPACE, l) },
 ]

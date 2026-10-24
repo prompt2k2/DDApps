@@ -78,5 +78,14 @@
   {"id": "beaver", "kind": "animals", "title": "North American beaver"},
   {"id": "seal", "kind": "animals", "title": "Harbor seal"},
   {"id": "swan", "kind": "animals", "title": "Mute swan"},
-  {"id": "mouse", "kind": "animals", "title": "House mouse"}
+  {"id": "mouse", "kind": "animals", "title": "House mouse"},
+  {"id": "mercury", "kind": "planets", "title": "Mercury (planet)"},
+  {"id": "venus", "kind": "planets", "title": "Venus"},
+  {"id": "earth", "kind": "planets", "title": "Earth", "file": "The Earth seen from Apollo 17.jpg"},
+  {"id": "mars", "kind": "planets", "title": "Mars"},
+  {"id": "jupiter", "kind": "planets", "title": "Jupiter"},
+  {"id": "saturn", "kind": "planets", "title": "Saturn"},
+  {"id": "uranus", "kind": "planets", "title": "Uranus"},
+  {"id": "neptune", "kind": "planets", "title": "Neptune"},
+  {"id": "pluto", "kind": "planets", "title": "Pluto"}
 ]

@@ -1,8 +1,9 @@
-// Downloads the library photos (places and animals) from Wikimedia Commons, once, for the repo.
+// Downloads the library photos (places, animals and planets) from Wikimedia Commons, once, for the repo.
 // For each entry in src/library/photo-sources.json it takes the lead photo of the Wikipedia article (or the
 // Commons file named in `file`), keeps it only when its licence is free (public domain, CC0, CC BY, CC BY-SA),
-// saves a 500 px wide copy to public/photos/<kind>/<id>.jpg, and writes the credit (author, licence, source)
-// to src/library/photo-credits.json, which the app shows under every photo.
+// saves a 500 px wide copy to public/photos/<kind>/<id>.<jpg|png> (most astronomy photos on Commons are PNG,
+// everything else is JPEG), and writes the credit (author, licence, source) to src/library/photo-credits.json,
+// which the app shows under every photo.
 // Run: node scripts/fetch-photos.mjs [id …]   (only the given ids, or all that are missing)
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -26,7 +27,7 @@ const api = async (host, params) => {
 const strip = (html = '') => html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()
 
 for (const s of sources) {
-  if (only.length ? !only.includes(s.id) : credits[s.id] && existsSync(`public/photos/${s.kind}/${s.id}.jpg`)) continue
+  if (only.length ? !only.includes(s.id) : credits[s.id] && (existsSync(`public/photos/${s.kind}/${s.id}.jpg`) || existsSync(`public/photos/${s.kind}/${s.id}.png`))) continue
   try {
     let file = s.file
     if (!file) {
@@ -41,11 +42,12 @@ for (const s of sources) {
     const licence = strip(m.LicenseShortName?.value)
     if (!FREE.test(licence)) throw new Error(`licence not free enough: ${licence} (${file})`)
     const thumb = ii.thumburl.split('?')[0]
-    if (!/\.(jpe?g)$/i.test(thumb)) throw new Error(`not a JPEG photo: ${thumb}`)
+    const ext = /\.(jpe?g)$/i.test(thumb) ? 'jpg' : /\.png$/i.test(thumb) ? 'png' : null
+    if (!ext) throw new Error(`not a JPEG or PNG photo: ${thumb}`)
     const img = await fetch(thumb, { headers: { 'User-Agent': UA } })
     if (!img.ok) throw new Error(`download failed ${img.status}`)
     mkdirSync(`public/photos/${s.kind}`, { recursive: true })
-    writeFileSync(`public/photos/${s.kind}/${s.id}.jpg`, Buffer.from(await img.arrayBuffer()))
+    writeFileSync(`public/photos/${s.kind}/${s.id}.${ext}`, Buffer.from(await img.arrayBuffer()))
     credits[s.id] = {
       author: strip(m.Artist?.value).slice(0, 120) || 'Unknown',
       licence,

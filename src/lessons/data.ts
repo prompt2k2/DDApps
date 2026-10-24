@@ -98,56 +98,125 @@ export const WORDS: Word[] = [...ANIMALS.map((a) => ({ emoji: `animal-${a.id}`, 
 
 // ---- Countries ----
 
-// Flags drawn by the app itself (no pictures to download or licence): stripes, a cross or a disc.
-// Only flags simple enough to draw exactly. Stripes of equal height; a colour listed twice makes a double stripe.
+// Flags are real photos of the flag (public/flags/<id>.svg, from Wikimedia Commons; see flag-sources.json
+// and scripts/fetch-flags.mjs), not drawn by the app.
 
-export type FlagShape =
-  | { kind: 'h'; colors: string[] } // horizontal stripes, top to bottom
-  | { kind: 'v'; colors: string[] } // vertical stripes, left to right
-  | { kind: 'cross'; field: string; cross: string; nordic: boolean }
-  | { kind: 'disc'; field: string; disc: string }
-
-export type Continent = 'Europe' | 'Africa' | 'Asia' | 'South America'
+export type Continent = 'Europe' | 'Africa' | 'Asia' | 'North America' | 'South America' | 'Oceania'
 
 export interface Country {
   id: string
   name: string
   capital: string
   continent: Continent
-  shape: FlagShape
+  /** A smaller area within the continent, for a two-level "where is it" picture (e.g. "West Africa"). */
+  region: string
+  /** What the people of this country are called (e.g. "Nigerians"). */
+  demonym: string
+  /** Language codes spoken there (see LANGUAGES), simplified to the handful a child would recognise. */
+  languages: string[]
 }
 
 export const COUNTRIES: Country[] = [
-  { id: 'de', name: 'Germany', capital: 'Berlin', continent: 'Europe', shape: { kind: 'h', colors: ['#000000', '#dd0000', '#ffce00'] } },
-  { id: 'fr', name: 'France', capital: 'Paris', continent: 'Europe', shape: { kind: 'v', colors: ['#0055a4', '#ffffff', '#ef4135'] } },
-  { id: 'it', name: 'Italy', capital: 'Rome', continent: 'Europe', shape: { kind: 'v', colors: ['#009246', '#ffffff', '#ce2b37'] } },
-  { id: 'ie', name: 'Ireland', capital: 'Dublin', continent: 'Europe', shape: { kind: 'v', colors: ['#169b62', '#ffffff', '#ff883e'] } },
-  { id: 'be', name: 'Belgium', capital: 'Brussels', continent: 'Europe', shape: { kind: 'v', colors: ['#000000', '#fdda24', '#ef3340'] } },
-  { id: 'at', name: 'Austria', capital: 'Vienna', continent: 'Europe', shape: { kind: 'h', colors: ['#ed2939', '#ffffff', '#ed2939'] } },
-  { id: 'nl', name: 'the Netherlands', capital: 'Amsterdam', continent: 'Europe', shape: { kind: 'h', colors: ['#ae1c28', '#ffffff', '#21468b'] } },
-  { id: 'pl', name: 'Poland', capital: 'Warsaw', continent: 'Europe', shape: { kind: 'h', colors: ['#ffffff', '#dc143c'] } },
-  { id: 'ua', name: 'Ukraine', capital: 'Kyiv', continent: 'Europe', shape: { kind: 'h', colors: ['#0057b7', '#ffd700'] } },
-  { id: 'hu', name: 'Hungary', capital: 'Budapest', continent: 'Europe', shape: { kind: 'h', colors: ['#cd2a3e', '#ffffff', '#436f4d'] } },
-  { id: 'ee', name: 'Estonia', capital: 'Tallinn', continent: 'Europe', shape: { kind: 'h', colors: ['#0072ce', '#000000', '#ffffff'] } },
-  { id: 'se', name: 'Sweden', capital: 'Stockholm', continent: 'Europe', shape: { kind: 'cross', field: '#006aa7', cross: '#fecc00', nordic: true } },
-  { id: 'dk', name: 'Denmark', capital: 'Copenhagen', continent: 'Europe', shape: { kind: 'cross', field: '#c8102e', cross: '#ffffff', nordic: true } },
-  { id: 'fi', name: 'Finland', capital: 'Helsinki', continent: 'Europe', shape: { kind: 'cross', field: '#ffffff', cross: '#002f6c', nordic: true } },
-  { id: 'ch', name: 'Switzerland', capital: 'Bern', continent: 'Europe', shape: { kind: 'cross', field: '#da291c', cross: '#ffffff', nordic: false } },
-  { id: 'ng', name: 'Nigeria', capital: 'Abuja', continent: 'Africa', shape: { kind: 'v', colors: ['#008751', '#ffffff', '#008751'] } },
-  { id: 'ml', name: 'Mali', capital: 'Bamako', continent: 'Africa', shape: { kind: 'v', colors: ['#14b53a', '#fcd116', '#ce1126'] } },
-  { id: 'gn', name: 'Guinea', capital: 'Conakry', continent: 'Africa', shape: { kind: 'v', colors: ['#ce1126', '#fcd116', '#009460'] } },
-  { id: 'td', name: 'Chad', capital: "N'Djamena", continent: 'Africa', shape: { kind: 'v', colors: ['#002664', '#fecb00', '#c60c30'] } },
-  { id: 'ci', name: "Côte d'Ivoire", capital: 'Yamoussoukro', continent: 'Africa', shape: { kind: 'v', colors: ['#f77f00', '#ffffff', '#009e60'] } },
-  { id: 'sl', name: 'Sierra Leone', capital: 'Freetown', continent: 'Africa', shape: { kind: 'h', colors: ['#1eb53a', '#ffffff', '#0072c6'] } },
-  { id: 'ga', name: 'Gabon', capital: 'Libreville', continent: 'Africa', shape: { kind: 'h', colors: ['#009e60', '#fcd116', '#3a75c4'] } },
-  { id: 'jp', name: 'Japan', capital: 'Tokyo', continent: 'Asia', shape: { kind: 'disc', field: '#ffffff', disc: '#bc002d' } },
-  { id: 'id', name: 'Indonesia', capital: 'Jakarta', continent: 'Asia', shape: { kind: 'h', colors: ['#ce1126', '#ffffff'] } },
-  { id: 'th', name: 'Thailand', capital: 'Bangkok', continent: 'Asia', shape: { kind: 'h', colors: ['#a51931', '#f4f5f8', '#2d2a4a', '#2d2a4a', '#f4f5f8', '#a51931'] } },
-  { id: 'ye', name: 'Yemen', capital: "Sana'a", continent: 'Asia', shape: { kind: 'h', colors: ['#ce1126', '#ffffff', '#000000'] } },
-  { id: 'pe', name: 'Peru', capital: 'Lima', continent: 'South America', shape: { kind: 'v', colors: ['#d91023', '#ffffff', '#d91023'] } },
+  // Europe
+  { id: 'de', name: 'Germany', capital: 'Berlin', continent: 'Europe', region: 'Western Europe', demonym: 'Germans', languages: ['de'] },
+  { id: 'fr', name: 'France', capital: 'Paris', continent: 'Europe', region: 'Western Europe', demonym: 'French', languages: ['fr'] },
+  { id: 'it', name: 'Italy', capital: 'Rome', continent: 'Europe', region: 'Southern Europe', demonym: 'Italians', languages: ['it'] },
+  { id: 'ie', name: 'Ireland', capital: 'Dublin', continent: 'Europe', region: 'Northern Europe', demonym: 'Irish', languages: ['en', 'ga'] },
+  { id: 'be', name: 'Belgium', capital: 'Brussels', continent: 'Europe', region: 'Western Europe', demonym: 'Belgians', languages: ['nl', 'fr', 'de'] },
+  { id: 'at', name: 'Austria', capital: 'Vienna', continent: 'Europe', region: 'Western Europe', demonym: 'Austrians', languages: ['de'] },
+  { id: 'nl', name: 'the Netherlands', capital: 'Amsterdam', continent: 'Europe', region: 'Western Europe', demonym: 'Dutch', languages: ['nl'] },
+  { id: 'pl', name: 'Poland', capital: 'Warsaw', continent: 'Europe', region: 'Eastern Europe', demonym: 'Poles', languages: ['pl'] },
+  { id: 'ua', name: 'Ukraine', capital: 'Kyiv', continent: 'Europe', region: 'Eastern Europe', demonym: 'Ukrainians', languages: ['uk'] },
+  { id: 'hu', name: 'Hungary', capital: 'Budapest', continent: 'Europe', region: 'Eastern Europe', demonym: 'Hungarians', languages: ['hu'] },
+  { id: 'ee', name: 'Estonia', capital: 'Tallinn', continent: 'Europe', region: 'Northern Europe', demonym: 'Estonians', languages: ['et'] },
+  { id: 'se', name: 'Sweden', capital: 'Stockholm', continent: 'Europe', region: 'Northern Europe', demonym: 'Swedes', languages: ['sv'] },
+  { id: 'dk', name: 'Denmark', capital: 'Copenhagen', continent: 'Europe', region: 'Northern Europe', demonym: 'Danes', languages: ['da'] },
+  { id: 'fi', name: 'Finland', capital: 'Helsinki', continent: 'Europe', region: 'Northern Europe', demonym: 'Finns', languages: ['fi'] },
+  { id: 'ch', name: 'Switzerland', capital: 'Bern', continent: 'Europe', region: 'Western Europe', demonym: 'Swiss', languages: ['de', 'fr', 'it'] },
+  { id: 'gb', name: 'the United Kingdom', capital: 'London', continent: 'Europe', region: 'Northern Europe', demonym: 'British', languages: ['en'] },
+  { id: 'es', name: 'Spain', capital: 'Madrid', continent: 'Europe', region: 'Southern Europe', demonym: 'Spaniards', languages: ['es'] },
+  { id: 'pt', name: 'Portugal', capital: 'Lisbon', continent: 'Europe', region: 'Southern Europe', demonym: 'Portuguese', languages: ['pt'] },
+  // Africa
+  { id: 'ng', name: 'Nigeria', capital: 'Abuja', continent: 'Africa', region: 'West Africa', demonym: 'Nigerians', languages: ['en', 'yo', 'ha', 'ig'] },
+  { id: 'ml', name: 'Mali', capital: 'Bamako', continent: 'Africa', region: 'West Africa', demonym: 'Malians', languages: ['fr', 'bm'] },
+  { id: 'gn', name: 'Guinea', capital: 'Conakry', continent: 'Africa', region: 'West Africa', demonym: 'Guineans', languages: ['fr', 'su'] },
+  { id: 'td', name: 'Chad', capital: "N'Djamena", continent: 'Africa', region: 'Central Africa', demonym: 'Chadians', languages: ['fr', 'ar'] },
+  { id: 'ci', name: "Côte d'Ivoire", capital: 'Yamoussoukro', continent: 'Africa', region: 'West Africa', demonym: 'Ivorians', languages: ['fr'] },
+  { id: 'sl', name: 'Sierra Leone', capital: 'Freetown', continent: 'Africa', region: 'West Africa', demonym: 'Sierra Leoneans', languages: ['en', 'kri'] },
+  { id: 'ga', name: 'Gabon', capital: 'Libreville', continent: 'Africa', region: 'Central Africa', demonym: 'Gabonese', languages: ['fr'] },
+  { id: 'eg', name: 'Egypt', capital: 'Cairo', continent: 'Africa', region: 'North Africa', demonym: 'Egyptians', languages: ['ar'] },
+  { id: 'gh', name: 'Ghana', capital: 'Accra', continent: 'Africa', region: 'West Africa', demonym: 'Ghanaians', languages: ['en', 'ak'] },
+  { id: 'ke', name: 'Kenya', capital: 'Nairobi', continent: 'Africa', region: 'East Africa', demonym: 'Kenyans', languages: ['sw', 'en'] },
+  { id: 'za', name: 'South Africa', capital: 'Pretoria', continent: 'Africa', region: 'Southern Africa', demonym: 'South Africans', languages: ['en', 'zu', 'xh', 'af'] },
+  { id: 'ma', name: 'Morocco', capital: 'Rabat', continent: 'Africa', region: 'North Africa', demonym: 'Moroccans', languages: ['ar', 'ber'] },
+  // Asia
+  { id: 'jp', name: 'Japan', capital: 'Tokyo', continent: 'Asia', region: 'East Asia', demonym: 'Japanese', languages: ['ja'] },
+  { id: 'id', name: 'Indonesia', capital: 'Jakarta', continent: 'Asia', region: 'Southeast Asia', demonym: 'Indonesians', languages: ['id'] },
+  { id: 'th', name: 'Thailand', capital: 'Bangkok', continent: 'Asia', region: 'Southeast Asia', demonym: 'Thai', languages: ['th'] },
+  { id: 'ye', name: 'Yemen', capital: "Sana'a", continent: 'Asia', region: 'Middle East', demonym: 'Yemenis', languages: ['ar'] },
+  { id: 'cn', name: 'China', capital: 'Beijing', continent: 'Asia', region: 'East Asia', demonym: 'Chinese', languages: ['zh'] },
+  { id: 'in', name: 'India', capital: 'New Delhi', continent: 'Asia', region: 'South Asia', demonym: 'Indians', languages: ['hi', 'en', 'bn', 'ta'] },
+  { id: 'ae', name: 'the United Arab Emirates', capital: 'Abu Dhabi', continent: 'Asia', region: 'Middle East', demonym: 'Emiratis', languages: ['ar'] },
+  { id: 'kr', name: 'South Korea', capital: 'Seoul', continent: 'Asia', region: 'East Asia', demonym: 'South Koreans', languages: ['ko'] },
+  // North America
+  { id: 'us', name: 'the United States', capital: 'Washington, D.C.', continent: 'North America', region: 'North America', demonym: 'Americans', languages: ['en'] },
+  { id: 'ca', name: 'Canada', capital: 'Ottawa', continent: 'North America', region: 'North America', demonym: 'Canadians', languages: ['en', 'fr'] },
+  { id: 'mx', name: 'Mexico', capital: 'Mexico City', continent: 'North America', region: 'North America', demonym: 'Mexicans', languages: ['es'] },
+  // South America
+  { id: 'pe', name: 'Peru', capital: 'Lima', continent: 'South America', region: 'South America', demonym: 'Peruvians', languages: ['es', 'qu'] },
+  { id: 'br', name: 'Brazil', capital: 'Brasília', continent: 'South America', region: 'South America', demonym: 'Brazilians', languages: ['pt'] },
+  { id: 'ar', name: 'Argentina', capital: 'Buenos Aires', continent: 'South America', region: 'South America', demonym: 'Argentinians', languages: ['es'] },
+  // Oceania
+  { id: 'au', name: 'Australia', capital: 'Canberra', continent: 'Oceania', region: 'Oceania', demonym: 'Australians', languages: ['en'] },
+  { id: 'nz', name: 'New Zealand', capital: 'Wellington', continent: 'Oceania', region: 'Oceania', demonym: 'New Zealanders', languages: ['en', 'mi'] },
 ]
 
-export const CONTINENTS: Continent[] = ['Europe', 'Africa', 'Asia', 'South America']
+export const CONTINENTS: Continent[] = ['Europe', 'Africa', 'Asia', 'North America', 'South America', 'Oceania']
+
+/** Photo address of a country's flag (relative to the app): public/flags/<id>.svg. */
+export const flagPhoto = (id: string) => `flags/${id}.svg`
+
+/** A language's name in each app language, for "Which language is spoken in …?" and the countries library. */
+export const LANGUAGES: Record<string, Record<'en' | 'de' | 'fr', string>> = {
+  en: { en: 'English', de: 'Englisch', fr: 'anglais' },
+  fr: { en: 'French', de: 'Französisch', fr: 'français' },
+  de: { en: 'German', de: 'Deutsch', fr: 'allemand' },
+  it: { en: 'Italian', de: 'Italienisch', fr: 'italien' },
+  ga: { en: 'Irish', de: 'Irisch', fr: 'irlandais' },
+  nl: { en: 'Dutch', de: 'Niederländisch', fr: 'néerlandais' },
+  pl: { en: 'Polish', de: 'Polnisch', fr: 'polonais' },
+  uk: { en: 'Ukrainian', de: 'Ukrainisch', fr: 'ukrainien' },
+  hu: { en: 'Hungarian', de: 'Ungarisch', fr: 'hongrois' },
+  et: { en: 'Estonian', de: 'Estnisch', fr: 'estonien' },
+  sv: { en: 'Swedish', de: 'Schwedisch', fr: 'suédois' },
+  da: { en: 'Danish', de: 'Dänisch', fr: 'danois' },
+  fi: { en: 'Finnish', de: 'Finnisch', fr: 'finnois' },
+  yo: { en: 'Yoruba', de: 'Yoruba', fr: 'yoruba' },
+  ha: { en: 'Hausa', de: 'Hausa', fr: 'haoussa' },
+  ig: { en: 'Igbo', de: 'Igbo', fr: 'igbo' },
+  bm: { en: 'Bambara', de: 'Bambara', fr: 'bambara' },
+  su: { en: 'Susu', de: 'Susu', fr: 'soussou' },
+  ar: { en: 'Arabic', de: 'Arabisch', fr: 'arabe' },
+  kri: { en: 'Krio', de: 'Krio', fr: 'krio' },
+  ja: { en: 'Japanese', de: 'Japanisch', fr: 'japonais' },
+  id: { en: 'Indonesian', de: 'Indonesisch', fr: 'indonésien' },
+  th: { en: 'Thai', de: 'Thailändisch', fr: 'thaï' },
+  es: { en: 'Spanish', de: 'Spanisch', fr: 'espagnol' },
+  qu: { en: 'Quechua', de: 'Quechua', fr: 'quechua' },
+  pt: { en: 'Portuguese', de: 'Portugiesisch', fr: 'portugais' },
+  zu: { en: 'Zulu', de: 'Zulu', fr: 'zoulou' },
+  xh: { en: 'Xhosa', de: 'Xhosa', fr: 'xhosa' },
+  af: { en: 'Afrikaans', de: 'Afrikaans', fr: 'afrikaans' },
+  ber: { en: 'Berber', de: 'Berberisch', fr: 'berbère' },
+  zh: { en: 'Mandarin Chinese', de: 'Mandarin-Chinesisch', fr: 'chinois mandarin' },
+  hi: { en: 'Hindi', de: 'Hindi', fr: 'hindi' },
+  bn: { en: 'Bengali', de: 'Bengalisch', fr: 'bengali' },
+  ta: { en: 'Tamil', de: 'Tamil', fr: 'tamoul' },
+  ko: { en: 'Korean', de: 'Koreanisch', fr: 'coréen' },
+  ak: { en: 'Akan (Twi)', de: 'Akan (Twi)', fr: 'akan (twi)' },
+  sw: { en: 'Swahili', de: 'Swahili', fr: 'swahili' },
+  mi: { en: 'Māori', de: 'Māori', fr: 'māori' },
+}
 
 // ---- English word lists ----
 

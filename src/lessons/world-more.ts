@@ -137,6 +137,26 @@ export const SPACE: FixedQuestion[] = [
     de: ['Wer war der erste Mensch im Weltall?', 'Juri Gagarin', 'Neil Armstrong', 'Christoph Kolumbus'],
     fr: ['Qui a été le premier humain à aller dans l’espace ?', 'Youri Gagarine', 'Neil Armstrong', 'Christophe Colomb'],
   },
+  {
+    en: ['How many planets are in the Solar System?', 'Eight', 'Seven', 'Nine'],
+    de: ['Wie viele Planeten hat unser Sonnensystem?', 'Acht', 'Sieben', 'Neun'],
+    fr: ['Combien de planètes compte le Système solaire ?', 'Huit', 'Sept', 'Neuf'],
+  },
+  {
+    en: ['Which planet has the most moons?', 'Saturn', 'Jupiter', 'Earth'],
+    de: ['Welcher Planet hat die meisten Monde?', 'Saturn', 'Jupiter', 'Die Erde'],
+    fr: ['Quelle planète a le plus de lunes ?', 'Saturne', 'Jupiter', 'La Terre'],
+  },
+  {
+    en: ['Which two planets have no moon at all?', 'Mercury and Venus', 'Earth and Mars', 'Uranus and Neptune'],
+    de: ['Welche zwei Planeten haben gar keinen Mond?', 'Merkur und Venus', 'Die Erde und Mars', 'Uranus und Neptun'],
+    fr: ['Quelles sont les deux planètes sans aucune lune ?', 'Mercure et Vénus', 'La Terre et Mars', 'Uranus et Neptune'],
+  },
+  {
+    en: ['How many moons does the Earth have?', 'One', 'Two', 'None'],
+    de: ['Wie viele Monde hat die Erde?', 'Einen', 'Zwei', 'Keinen'],
+    fr: ['Combien de lunes la Terre a-t-elle ?', 'Une', 'Deux', 'Aucune'],
+  },
 ]
 
 /** A fixed question in a language, with its answers in a random order. */
