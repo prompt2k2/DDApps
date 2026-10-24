@@ -149,7 +149,7 @@ export function embedUrl(v: { kind: 'video' | 'playlist'; id: string }): string 
 /** A still picture for a video card (playlists have none without YouTube's API). */
 export const thumbnail = (v: { kind: 'video' | 'playlist'; id: string }) => (v.kind === 'video' ? `https://i.ytimg.com/vi/${v.id}/mqdefault.jpg` : null)
 
-/** Is a call link safe to open: a phone number, FaceTime, or a WhatsApp/Signal/Skype/Teams/Zoom link? Pure (tested). */
+/** Is a call link safe to open: a phone number, FaceTime, or a WhatsApp/Signal/Skype/Teams/Zoom/Meet link? Pure (tested). */
 export function callLinkOk(link: string): boolean {
-  return /^(tel:\+?[\d\s()-]{5,}|facetime(-audio)?:|https:\/\/(wa\.me|api\.whatsapp\.com|signal\.me|join\.skype\.com|teams\.microsoft\.com|([\w-]+\.)?zoom\.us)\/)/i.test(link.trim())
+  return /^(tel:\+?[\d\s()-]{5,}|facetime(-audio)?:|https:\/\/(wa\.me|api\.whatsapp\.com|signal\.me|join\.skype\.com|teams\.microsoft\.com|meet\.google\.com|([\w-]+\.)?zoom\.us)\/)/i.test(link.trim())
 }

@@ -49,6 +49,13 @@ export interface RoutineHoliday {
   label: string
 }
 
+/** An approved app or site (Mathletics, a game site…), opened in the device's own browser/app when tapped. */
+export interface AppLink {
+  id: string
+  name: string
+  url: string
+}
+
 /** The ids the app ships with, matching a paper daily checklist: hygiene, school uniform, reading, screen time. */
 export const ROUTINE_ACTIVITY_IDS = ['brushTeeth', 'makeBed', 'breakfast', 'bath', 'vitaminC', 'uniformOn', 'readBook1', 'uniformOff', 'device1', 'lunch', 'device2', 'readBook2'] as const
 export type RoutineActivityId = (typeof ROUTINE_ACTIVITY_IDS)[number]
@@ -121,6 +128,8 @@ export interface Settings {
   videos: { id: string; kind: 'video' | 'playlist'; title: string }[]
   /** One-tap calls: a name and a link (tel:, a WhatsApp or FaceTime link). */
   contacts: { id: string; name: string; link: string }[]
+  /** Other apps and sites, unlocked by earned time like games and videos (the `apps` item). */
+  apps: AppLink[]
   backup: {
     /** ms since 1970 of the last backup file, or null. */
     lastAt: number | null
@@ -227,6 +236,11 @@ export const DEFAULT_SETTINGS: Settings = {
   stations: [],
   videos: [],
   contacts: [],
+  apps: [
+    { id: 'mathletics', name: 'Mathletics', url: 'https://www.mathletics.com' },
+    { id: 'crazygames', name: 'CrazyGames', url: 'https://www.crazygames.com' },
+    { id: 'browser', name: 'Browser', url: 'https://www.google.com' },
+  ],
   backup: { lastAt: null, remindDays: 7 },
   updatedAt: 0,
 }

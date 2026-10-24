@@ -23,6 +23,7 @@ export const de: Strings = {
     learn: 'Lernen',
     games: 'Spiele',
     media: 'Medien',
+    apps: 'Apps',
     parents: 'Eltern',
   },
   items: {
@@ -42,6 +43,7 @@ export const de: Strings = {
     stories: 'Geschichten',
     videos: 'Videos',
     calls: 'Familie anrufen',
+    apps: 'Apps',
   },
   itemLearn: {
     maths: 'Zahlen und Rechnen',
@@ -60,12 +62,14 @@ export const de: Strings = {
     stories: 'Geschichten hören',
     videos: 'Videos, die die Eltern ausgesucht haben',
     calls: 'Familie mit einem Tipp anrufen',
+    apps: 'Andere Apps und Seiten, nach Verdienst',
   },
   groups: {
     learning: 'Lernen',
     games: 'Spiele',
     media: 'Hören und Sehen',
     family: 'Familie',
+    apps: 'Apps',
   },
   status: {
     battery: (n: number) => `Akku ${n} %`,
@@ -236,6 +240,12 @@ export const de: Strings = {
     holidayFrom: 'Von',
     holidayTo: 'Bis',
   },
+  apps: {
+    note: 'Andere Apps und Seiten, geöffnet im Browser, solange heute noch verdiente Zeit übrig ist (Missionen → Sterne → Minuten, wie bei Spielen und Videos). Sobald sie dorthin wechselt, wird die Zeit dort nicht mehr gezählt.',
+    namePlaceholder: 'Name der App',
+    linkPlaceholder: 'https://…',
+    none: 'Noch keine Apps hinzugefügt. Ein Elternteil kann welche auf dem Elternbildschirm hinzufügen.',
+  },
   parent: {
     enterPin: 'Eltern-PIN',
     createPin: 'Eltern-PIN wählen',
@@ -262,6 +272,7 @@ export const de: Strings = {
     birthdayName: 'Name',
     day: 'Tag',
     routine: 'Tagesroutine',
+    apps: 'Andere Apps',
     security: 'PIN und Daten',
     changePin: 'PIN ändern',
     newRecoveryCode: 'Neuer Wiederherstellungscode',
@@ -407,7 +418,7 @@ export const de: Strings = {
     stationsNote: 'Jede Radio-Stream-Adresse, die mit https:// beginnt (von der Website des Senders).',
     stationName: 'Name des Senders',
     notHttps: 'Die Adresse muss mit https:// beginnen.',
-    callsNote: 'Ein Name und ein Anruf-Link: tel:+49… für ein Telefon, https://wa.me/49… für WhatsApp oder facetime:… auf dem iPad.',
+    callsNote: 'Ein Name und ein Anruf-Link: tel:+49… für ein Telefon, https://wa.me/49… für WhatsApp, https://meet.google.com/… für Google Meet, oder facetime:… auf dem iPad.',
     notCallLink: 'Bitte einen tel:-, facetime:- oder WhatsApp-Link (https://wa.me/…) verwenden.',
   },
   voice: {

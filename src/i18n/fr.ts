@@ -23,6 +23,7 @@ export const fr: Strings = {
     learn: 'Apprendre',
     games: 'Jeux',
     media: 'Médias',
+    apps: 'Applications',
     parents: 'Parents',
   },
   items: {
@@ -42,6 +43,7 @@ export const fr: Strings = {
     stories: 'Histoires',
     videos: 'Vidéos',
     calls: 'Appeler la famille',
+    apps: 'Applications',
   },
   itemLearn: {
     maths: 'Nombres et calculs',
@@ -60,12 +62,14 @@ export const fr: Strings = {
     stories: 'Écouter des histoires',
     videos: 'Vidéos choisies par les parents',
     calls: 'Appeler la famille en un geste',
+    apps: 'D’autres applications et sites, une fois gagné',
   },
   groups: {
     learning: 'Apprendre',
     games: 'Jeux',
     media: 'Écouter et regarder',
     family: 'Famille',
+    apps: 'Applications',
   },
   status: {
     battery: (n: number) => `Batterie ${n} %`,
@@ -236,6 +240,12 @@ export const fr: Strings = {
     holidayFrom: 'Du',
     holidayTo: 'Au',
   },
+  apps: {
+    note: 'D’autres applications et sites, ouverts dans le navigateur tant qu’il reste du temps gagné aujourd’hui (missions → étoiles → minutes, comme les jeux et les vidéos). Une fois qu’elle les quitte pour l’une d’elles, le temps passé là-bas n’est plus compté ici.',
+    namePlaceholder: 'Nom de l’application',
+    linkPlaceholder: 'https://…',
+    none: 'Aucune application ajoutée. Un parent peut en ajouter sur l’écran parent.',
+  },
   parent: {
     enterPin: 'PIN parent',
     createPin: 'Choisissez un PIN parent',
@@ -262,6 +272,7 @@ export const fr: Strings = {
     birthdayName: 'Prénom',
     day: 'Jour',
     routine: 'Routine quotidienne',
+    apps: 'Autres applications',
     security: 'PIN et données',
     changePin: 'Changer le PIN',
     newRecoveryCode: 'Nouveau code de secours',
@@ -407,7 +418,7 @@ export const fr: Strings = {
     stationsNote: 'Toute adresse de flux radio qui commence par https:// (sur le site de la station).',
     stationName: 'Nom de la station',
     notHttps: 'L’adresse doit commencer par https://',
-    callsNote: 'Un prénom et un lien d’appel : tel:+33… pour un téléphone, https://wa.me/33… pour WhatsApp, ou facetime:… sur iPad.',
+    callsNote: 'Un prénom et un lien d’appel : tel:+33… pour un téléphone, https://wa.me/33… pour WhatsApp, https://meet.google.com/… pour Google Meet, ou facetime:… sur iPad.',
     notCallLink: 'Utilisez un lien tel:, facetime: ou WhatsApp (https://wa.me/…).',
   },
   voice: {

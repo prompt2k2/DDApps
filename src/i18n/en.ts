@@ -26,6 +26,7 @@ export const en = {
     learn: 'Learn',
     games: 'Games',
     media: 'Media',
+    apps: 'Apps',
     parents: 'Parents',
   },
   items: {
@@ -45,6 +46,7 @@ export const en = {
     stories: 'Stories',
     videos: 'Videos',
     calls: 'Family calls',
+    apps: 'Apps',
   } satisfies Record<ItemId, string>,
   /** What a child learns from each item (shown on game tiles). */
   itemLearn: {
@@ -64,12 +66,14 @@ export const en = {
     stories: 'Listening to stories',
     videos: 'Videos the parents picked',
     calls: 'One tap to call family',
+    apps: 'Other apps and sites, once earned',
   } satisfies Record<ItemId, string>,
   groups: {
     learning: 'Learning',
     games: 'Games',
     media: 'Listening and watching',
     family: 'Family',
+    apps: 'Apps',
   } satisfies Record<ItemGroup, string>,
   status: {
     battery: (n: number) => `Battery ${n}%`,
@@ -239,6 +243,12 @@ export const en = {
     holidayFrom: 'From',
     holidayTo: 'To',
   },
+  apps: {
+    note: 'Other apps and sites, opened in the browser once earned time is left today (missions → stars → minutes, the same as games and videos). Once she leaves for one of these, time spent there is not tracked here.',
+    namePlaceholder: 'App name',
+    linkPlaceholder: 'https://…',
+    none: 'No apps added yet. A parent can add some on the parent screen.',
+  },
   parent: {
     enterPin: 'Parent PIN',
     createPin: 'Choose a parent PIN',
@@ -265,6 +275,7 @@ export const en = {
     birthdayName: 'Name',
     day: 'Day',
     routine: 'Daily routine',
+    apps: 'Other apps',
     security: 'PIN and data',
     changePin: 'Change PIN',
     newRecoveryCode: 'New recovery code',
@@ -409,7 +420,7 @@ export const en = {
     stationsNote: 'Any radio stream address that starts with https:// (from the station’s website).',
     stationName: 'Station name',
     notHttps: 'The address must start with https://',
-    callsNote: 'A name and a call link: tel:+44… for a phone, https://wa.me/44… for WhatsApp, or facetime:… on iPad.',
+    callsNote: 'A name and a call link: tel:+44… for a phone, https://wa.me/44… for WhatsApp, https://meet.google.com/… for Google Meet, or facetime:… on iPad.',
     notCallLink: 'Use a tel:, facetime: or WhatsApp (https://wa.me/…) link.',
   },
   voice: {

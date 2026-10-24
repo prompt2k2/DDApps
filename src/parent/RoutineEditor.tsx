@@ -77,11 +77,9 @@ function ActivityList() {
                 </button>
               </div>
             </div>
-            {!a.builtin && (
-              <button className="secondary" aria-label={t.common.remove} onClick={() => remove(a.id)}>
-                <Trash2 />
-              </button>
-            )}
+            <button className="secondary" aria-label={t.common.remove} onClick={() => remove(a.id)}>
+              <Trash2 />
+            </button>
           </div>
         )
       })}

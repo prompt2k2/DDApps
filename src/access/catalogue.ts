@@ -1,7 +1,7 @@
 // Everything a parent can switch on or off (access control layer 1) and lock or unlock (layer 2).
 // To add an item: add it here, give it a name in i18n/en.ts (items.<id>), and show it on its screen.
 
-export type ItemGroup = 'learning' | 'games' | 'media' | 'family'
+export type ItemGroup = 'learning' | 'games' | 'media' | 'family' | 'apps'
 
 export const ITEM_IDS = [
   // Learning: the mission subjects.
@@ -26,6 +26,9 @@ export const ITEM_IDS = [
   'videos',
   // Family.
   'calls',
+  // Other apps on the device (Google Meet is always open as a "calls" contact instead): a parent-curated
+  // list, locked until earned like games and videos.
+  'apps',
 ] as const
 
 export type ItemId = (typeof ITEM_IDS)[number]
@@ -62,9 +65,10 @@ export const ITEMS: Record<ItemId, Item> = {
   stories: { id: 'stories', group: 'media', emoji: 'openbook', ready: true, minAge: 4, starter: 'unlocked' },
   videos: { id: 'videos', group: 'media', emoji: 'tv', ready: true, minAge: 4, starter: 'locked' },
   calls: { id: 'calls', group: 'family', emoji: 'speech', ready: true, minAge: 4, starter: 'unlocked' },
+  apps: { id: 'apps', group: 'apps', emoji: 'game', ready: true, minAge: 6, starter: 'locked' },
 }
 
-export const GROUPS: ItemGroup[] = ['learning', 'games', 'media', 'family']
+export const GROUPS: ItemGroup[] = ['learning', 'games', 'media', 'family', 'apps']
 
 export const itemsIn = (group: ItemGroup) => ITEM_IDS.filter((id) => ITEMS[id].group === group)
 

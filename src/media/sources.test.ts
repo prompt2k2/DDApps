@@ -20,6 +20,7 @@ describe('listen and watch sources', () => {
     expect(callLinkOk('tel:+44 20 7946 0000')).toBe(true)
     expect(callLinkOk('https://wa.me/447700900000')).toBe(true)
     expect(callLinkOk('facetime:someone@example.com')).toBe(true)
+    expect(callLinkOk('https://meet.google.com/abc-defg-hij')).toBe(true)
     expect(callLinkOk('https://example.com')).toBe(false)
     expect(callLinkOk('javascript:alert(1)')).toBe(false)
   })

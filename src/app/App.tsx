@@ -7,6 +7,7 @@ import { deviceLang, LangContext, useT } from '@/i18n'
 import { MediaScreen } from '@/media/MediaScreen'
 import { usePlayer } from '@/media/player'
 import { PlayerProvider } from '@/media/PlayerProvider'
+import { AppsScreen } from '@/apps/AppsScreen'
 import { ParentGate } from '@/parent/ParentGate'
 import { ParentScreen } from '@/parent/ParentScreen'
 import { addUsage, currentArea, TICK_SECONDS } from '@/progress/usage'
@@ -112,6 +113,7 @@ function Screens() {
         {screen === 'learn' && <LearnScreen />}
         {screen === 'games' && <GamesScreen start={startGame} onStarted={() => setStartGame(null)} />}
         {screen === 'media' && <MediaScreen key={startListen ?? ''} start={startListen} />}
+        {screen === 'apps' && <AppsScreen />}
         {screen === 'parents' && <ParentScreen />}
       </Shell>
       {askPin && (

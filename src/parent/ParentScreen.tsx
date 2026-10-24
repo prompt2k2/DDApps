@@ -42,6 +42,9 @@ export function ParentScreen() {
       <Card emoji="tv" title={t.media.title} wide>
         <MediaEditor />
       </Card>
+      <Card emoji="game" title={t.parent.apps} wide>
+        <AppsEditor />
+      </Card>
       <Card emoji="speech" title={t.voice.title}>
         <VoiceCard />
       </Card>
@@ -454,6 +457,26 @@ function MediaEditor() {
           onRemove={(key) => updateSettings((s) => ({ ...s, contacts: s.contacts.filter((x) => x.id !== key) }))}
         />
       </div>
+    </div>
+  )
+}
+
+/** Other apps and sites, unlocked by earned time like games and videos (see access/catalogue.ts's `apps` item). */
+function AppsEditor() {
+  const t = useT()
+  const { settings, updateSettings } = useStudio()
+  const id = () => crypto.randomUUID()
+  return (
+    <div className="editor">
+      <small className="muted">{t.apps.note}</small>
+      <LinkList
+        items={settings.apps.map((a) => ({ id: a.id, name: a.name, detail: a.url }))}
+        namePlaceholder={t.apps.namePlaceholder}
+        linkPlaceholder={t.apps.linkPlaceholder}
+        check={(link) => (/^https:\/\/\S+$/.test(link) ? null : t.media.notHttps)}
+        onAdd={(name, url) => updateSettings((s) => ({ ...s, apps: [...s.apps, { id: id(), name, url }] }))}
+        onRemove={(key) => updateSettings((s) => ({ ...s, apps: s.apps.filter((a) => a.id !== key) }))}
+      />
     </div>
   )
 }

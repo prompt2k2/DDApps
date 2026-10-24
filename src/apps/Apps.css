@@ -1,0 +1,12 @@
+/* Apps tiles leave the PWA (an external site/app), so .play-tile needs its own anchor reset. */
+a.play-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.apps-locked {
+  display: grid;
+  place-items: start;
+}
