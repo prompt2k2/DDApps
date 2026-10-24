@@ -1,4 +1,10 @@
 {
+  "map-world": {
+    "author": "STyx",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:World_location_map.svg"
+  },
   "eiffel-tower": {
     "author": "Benh LIEU SONG",
     "licence": "Public domain",
@@ -808,5 +814,131 @@
     "licence": "Public domain",
     "licenceUrl": "",
     "source": "https://commons.wikimedia.org/wiki/File:Pluto_in_True_Color_-_High-Res.png"
+  },
+  "nile": {
+    "author": "Fiktube",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Beautiful_nature_along_Nile_River_01.jpg"
+  },
+  "amazon": {
+    "author": "European Space Agency",
+    "licence": "CC BY-SA 3.0 igo",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Amazon_River_ESA387332.jpg"
+  },
+  "yangtze": {
+    "author": "Andrew Hitchcock",
+    "licence": "CC BY 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Dusk_on_the_Yangtze_River.jpg"
+  },
+  "mississippi": {
+    "author": "NPS photo",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Efmo_View_from_Fire_Point.jpg"
+  },
+  "danube": {
+    "author": "Visions of Domino",
+    "licence": "CC BY 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:View_from_Gell%C3%A9rt_Hill_to_the_Danube,_Hungary_-_Budapest_(28493220635).jpg"
+  },
+  "niger": {
+    "author": "NigerTZai",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Niger,_Niamey,_Pont_Kennedy_(1).jpg"
+  },
+  "ganges": {
+    "author": "Babasteve",
+    "licence": "CC BY 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Varanasiganga.jpg"
+  },
+  "pacific": {
+    "author": "CIA World Factbook",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Pacific_Ocean_-_en.png"
+  },
+  "atlantic": {
+    "author": "CIA",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Atlantic_Ocean_-_en.png"
+  },
+  "indian-ocean": {
+    "author": "United States Central Intelligence Agency",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Indian_Ocean-CIA_WFB_Map.png"
+  },
+  "southern-ocean": {
+    "author": "Connormah (talk · contribs)",
+    "licence": "CC BY-SA 3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Location_Southern_Ocean.svg"
+  },
+  "arctic": {
+    "author": "CIA",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Arctic_Ocean_-_en.png"
+  },
+  "vesuvius": {
+    "author": "pietro scerrato",
+    "licence": "CC BY 3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Il_cratere_del_Vulcano_-_panoramio.jpg"
+  },
+  "krakatoa": {
+    "author": "Lithograph: Parker &amp; Coward, Britain;",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Krakatoa_eruption_lithograph.jpg"
+  },
+  "maunaloa": {
+    "author": "J.D. Griggs",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Mauna_Loa_Volcano.jpg"
+  },
+  "sthelens": {
+    "author": "Lyn Topinka",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:MSH82_st_helens_plume_from_harrys_ridge_05-19-82.jpg"
+  },
+  "etna": {
+    "author": "BenAveling",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mt_Etna_and_Catania1.jpg"
+  },
+  "popocatepetl": {
+    "author": "Jakub Hejtmánek",
+    "licence": "CC BY-SA 3.0",
+    "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Mexico-Popocatepetl.jpg"
+  },
+  "igneous": {
+    "author": "James St. John",
+    "licence": "CC BY 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Basalt_12_(48674276333).jpg"
+  },
+  "sedimentary": {
+    "author": "Michael C. Rygel",
+    "licence": "CC BY-SA 3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Channel-StellartonFm-CoalburnPit.JPG"
+  },
+  "metamorphic": {
+    "author": "No machine-readable author provided. Siim assumed (based on copyright claims).",
+    "licence": "CC BY-SA 3.0",
+    "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Quartzite.jpg"
   }
 }

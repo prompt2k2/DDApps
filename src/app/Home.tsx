@@ -45,7 +45,7 @@ export function Home({ onPlay }: { onPlay: (id: ItemId) => void }) {
           <BirthdaysCard />
         </div>
         <section className="play-row">
-          {(['places', 'animals', 'countries', 'planets'] as const).map((id) => (
+          {(['places', 'animals', 'countries', 'planets', 'earth'] as const).map((id) => (
             <ItemTile key={id} id={id} onOpen={() => setShelf(id)} />
           ))}
           {tiles.map((id) => (

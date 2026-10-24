@@ -3,21 +3,25 @@ import { useState } from 'react'
 import { StatusBar } from '@/app/Shell'
 import { sayText, useCanSpeak } from '@/audio/say'
 import { type Lang, useLang, useT } from '@/i18n'
-import { ANIMALS, COUNTRIES, flagPhoto, LANGUAGES } from '@/lessons/data'
+import { ANIMALS, CONTINENTS, COUNTRIES, flagPhoto, LANGUAGES } from '@/lessons/data'
 import { lessonText } from '@/lessons/text'
 import { useArea } from '@/progress/usage'
 import { Emoji } from '@/shared/Emoji'
 import { ANIMAL_HOMES, animalPhoto } from './animals'
+import { EARTH, type EarthCategory, earthPhoto } from './earth'
 import CREDITS from './photo-credits.json'
 import { PLACE_COUNTRIES, PLACES, placeCountry, placePhoto } from './places'
 import { PLANET_TEXT, PLANETS, planetPhoto } from './planets'
+import { WorldMap } from './WorldMap'
 import './Library.css'
 
-// The library: animals, places, countries and planets, each with a real photo, a few true sentences that can
-// be read aloud, and the photo's credit (Wikimedia Commons, free licences).
+// The library: animals, places, countries, planets and earth (rivers, oceans, volcanoes, rock types), each
+// with a real photo, a few true sentences that can be read aloud, and the photo's credit (Wikimedia Commons,
+// free licences).
 
-export type Shelf = 'animals' | 'places' | 'countries' | 'planets'
-const SHELF_EMOJI: Record<Shelf, string> = { animals: 'paws', places: 'map', countries: 'globe', planets: 'moon' }
+export type Shelf = 'animals' | 'places' | 'countries' | 'planets' | 'earth'
+const SHELF_EMOJI: Record<Shelf, string> = { animals: 'paws', places: 'map', countries: 'globe', planets: 'moon', earth: 'mountain' }
+const EARTH_CATEGORIES: EarthCategory[] = ['river', 'ocean', 'volcano', 'rock']
 
 interface Entry {
   id: string
@@ -28,6 +32,8 @@ interface Entry {
   lines: { label?: string; text: string }[]
   /** A flag (wide, flat colours): shown whole (object-fit: contain) instead of cropped like a photo. */
   flag?: boolean
+  /** Shows a "where is it" world map with a pin, in the detail view only. */
+  map?: { lat: number; lon: number }
 }
 
 /** "manchot" → "Manchot", as a title (German nouns already start with a capital). */
@@ -35,7 +41,7 @@ const capitalize = (s: string, lang: Lang) => s.charAt(0).toLocaleUpperCase(lang
 
 const credits = CREDITS as Record<string, { author: string; licence: string }>
 
-function entries(shelf: Shelf, lang: Lang, country: string | null, t: ReturnType<typeof useT>): Entry[] {
+function entries(shelf: Shelf, lang: Lang, filter: string | null, t: ReturnType<typeof useT>): Entry[] {
   if (shelf === 'animals') {
     const T = lessonText(lang)
     return ANIMALS.map((a) => ({
@@ -47,24 +53,45 @@ function entries(shelf: Shelf, lang: Lang, country: string | null, t: ReturnType
   }
   if (shelf === 'countries') {
     const T = lessonText(lang)
-    return COUNTRIES.map((c) => {
-      const region = T.countries[c.id].region
-      const continent = T.continents[c.continent]
-      const where = region === continent ? continent : `${region}, ${continent}`
-      return {
-        id: c.id,
-        photo: flagPhoto(c.id),
-        name: T.countries[c.id].name,
-        sub: where,
-        flag: true,
-        lines: [
-          { label: t.library.continent, text: where },
-          { label: t.library.languages, text: c.languages.map((code) => LANGUAGES[code][lang]).join(', ') },
-          { label: t.library.peopleCalled, text: T.countries[c.id].demonym },
-          { label: t.library.capitalCity, text: T.countries[c.id].capital },
-        ],
-      }
-    }).sort((a, b) => a.name.localeCompare(b.name, lang))
+    return COUNTRIES.filter((c) => !filter || c.continent === filter)
+      .map((c) => {
+        const region = T.countries[c.id].region
+        const continent = T.continents[c.continent]
+        const where = region === continent ? continent : `${region}, ${continent}`
+        const nearby = EARTH.filter((x) => x.countries?.includes(c.id)).map((x) => x.text[lang].name)
+        return {
+          id: c.id,
+          photo: flagPhoto(c.id),
+          name: T.countries[c.id].name,
+          sub: where,
+          flag: true,
+          map: { lat: c.lat, lon: c.lon },
+          lines: [
+            { label: t.library.continent, text: where },
+            { label: t.library.languages, text: c.languages.map((code) => LANGUAGES[code][lang]).join(', ') },
+            { label: t.library.peopleCalled, text: T.countries[c.id].demonym },
+            { label: t.library.capitalCity, text: T.countries[c.id].capital },
+            ...(nearby.length ? [{ label: t.library.foundNear, text: nearby.join(', ') }] : []),
+          ],
+        }
+      })
+      .sort((a, b) => a.name.localeCompare(b.name, lang))
+  }
+  if (shelf === 'earth') {
+    const T = lessonText(lang)
+    return EARTH.filter((x) => !filter || x.category === filter)
+      .map((x) => {
+        const text = x.text[lang]
+        const where = x.countries?.map((id) => T.countries[id].name).join(', ')
+        return {
+          id: x.id,
+          photo: earthPhoto(x.id),
+          name: text.name,
+          sub: t.library.categories[x.category],
+          lines: [...(where ? [{ label: t.library.whereIsIt, text: where }] : []), { text: text.about }],
+        }
+      })
+      .sort((a, b) => a.name.localeCompare(b.name, lang))
   }
   if (shelf === 'planets') {
     return PLANETS.map((p) => {
@@ -82,7 +109,7 @@ function entries(shelf: Shelf, lang: Lang, country: string | null, t: ReturnType
       }
     })
   }
-  return PLACES.filter((p) => !country || p.countries.includes(country))
+  return PLACES.filter((p) => !filter || p.countries.includes(filter))
     .map((p) => ({ id: p.id, photo: placePhoto(p.id), name: p.text[lang].name, sub: placeCountry(p, lang), lines: [{ label: t.library.country, text: placeCountry(p, lang) }, { text: p.text[lang].about }] }))
     .sort((a, b) => a.name.localeCompare(b.name, lang))
 }
@@ -90,10 +117,10 @@ function entries(shelf: Shelf, lang: Lang, country: string | null, t: ReturnType
 export function LibraryScreen({ shelf, onClose }: { shelf: Shelf; onClose: () => void }) {
   const t = useT()
   const lang = useLang()
-  const [country, setCountry] = useState<string | null>(null)
+  const [filter, setFilter] = useState<string | null>(null)
   const [open, setOpen] = useState<number | null>(null)
   useArea(`library:${shelf}`)
-  const list = entries(shelf, lang, country, t)
+  const list = entries(shelf, lang, filter, t)
   const countries = Object.keys(PLACE_COUNTRIES)
     .filter((c) => PLACES.some((p) => p.countries.includes(c)))
     .sort((a, b) => PLACE_COUNTRIES[a][lang].localeCompare(PLACE_COUNTRIES[b][lang], lang))
@@ -119,12 +146,36 @@ export function LibraryScreen({ shelf, onClose }: { shelf: Shelf; onClose: () =>
         <div className="library-body">
           {shelf === 'places' && (
             <div className="library-filter" role="radiogroup" aria-label={t.library.countryFilter}>
-              <button role="radio" aria-checked={country === null} className={country === null ? '' : 'secondary'} onClick={() => setCountry(null)}>
+              <button role="radio" aria-checked={filter === null} className={filter === null ? '' : 'secondary'} onClick={() => setFilter(null)}>
                 {t.library.allCountries}
               </button>
               {countries.map((c) => (
-                <button key={c} role="radio" aria-checked={country === c} className={country === c ? '' : 'secondary'} onClick={() => setCountry(c)}>
+                <button key={c} role="radio" aria-checked={filter === c} className={filter === c ? '' : 'secondary'} onClick={() => setFilter(c)}>
                   {PLACE_COUNTRIES[c][lang]}
+                </button>
+              ))}
+            </div>
+          )}
+          {shelf === 'countries' && (
+            <div className="library-filter" role="radiogroup" aria-label={t.library.continentFilter}>
+              <button role="radio" aria-checked={filter === null} className={filter === null ? '' : 'secondary'} onClick={() => setFilter(null)}>
+                {t.library.allContinents}
+              </button>
+              {CONTINENTS.map((c) => (
+                <button key={c} role="radio" aria-checked={filter === c} className={filter === c ? '' : 'secondary'} onClick={() => setFilter(c)}>
+                  {lessonText(lang).continents[c]}
+                </button>
+              ))}
+            </div>
+          )}
+          {shelf === 'earth' && (
+            <div className="library-filter" role="radiogroup" aria-label={t.library.categoryFilter}>
+              <button role="radio" aria-checked={filter === null} className={filter === null ? '' : 'secondary'} onClick={() => setFilter(null)}>
+                {t.library.allCategories}
+              </button>
+              {EARTH_CATEGORIES.map((c) => (
+                <button key={c} role="radio" aria-checked={filter === c} className={filter === c ? '' : 'secondary'} onClick={() => setFilter(c)}>
+                  {t.library.categories[c]}
                 </button>
               ))}
             </div>
@@ -155,6 +206,7 @@ function Detail({ entry, onPrev, onNext }: { entry: Entry; onPrev: () => void; o
       <figure>
         <img src={`${import.meta.env.BASE_URL}${entry.photo}`} alt={entry.name} className={entry.flag ? 'flag-photo' : ''} />
         {credit && <figcaption>{t.library.photo(credit.author, credit.licence)}</figcaption>}
+        {entry.map && <WorldMap lat={entry.map.lat} lon={entry.map.lon} />}
       </figure>
       <div className="library-text">
         <h2>

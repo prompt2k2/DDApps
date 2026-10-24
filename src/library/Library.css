@@ -44,6 +44,28 @@
   border: 1px solid rgb(0 0 0 / 14%);
   padding: 0.4rem;
 }
+/* A small "where is it" map with a pin, under a country's flag. */
+.world-map {
+  position: relative;
+  margin-top: 0.6rem;
+  border-radius: var(--radius-s);
+  overflow: hidden;
+  background: var(--sky-soft);
+}
+.world-map img {
+  display: block;
+  width: 100%;
+}
+.world-map-pin {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--red);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 25%);
+  transform: translate(-50%, -50%);
+}
 .library-card b {
   font-family: var(--display);
   font-size: 1.1rem;

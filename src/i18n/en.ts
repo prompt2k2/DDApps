@@ -2,6 +2,7 @@ import type { ItemGroup, ItemId } from '@/access/catalogue'
 import type { RoutineActivityId, RoutineSchedule } from '@/data/types'
 import type { SchoolSystem } from '@/lessons/classes'
 import type { ThemeMode } from '@/shared/theme'
+import type { EarthCategory } from '@/library/earth'
 
 // Every text the app shows, in English. Other languages: de.ts, fr.ts. To add one: copy this file, type it as
 // `Strings` (so a missing text fails the build), translate, and add it to LANGS and STRINGS in index.ts.
@@ -39,6 +40,7 @@ export const en = {
     places: 'Places of the world',
     countries: 'Countries',
     planets: 'Planets',
+    earth: 'Earth',
     memory: 'Memory',
     builder: 'Word builder',
     puzzle: 'Puzzle',
@@ -61,6 +63,7 @@ export const en = {
     places: 'Famous places, country by country',
     countries: 'Continents, flags, languages and more',
     planets: 'The Sun’s family, and their moons',
+    earth: 'Rivers, oceans, volcanoes and rocks',
     memory: 'Remembering, and reading words',
     builder: 'Spelling words letter by letter',
     puzzle: 'Looking closely at shapes',
@@ -156,6 +159,13 @@ export const en = {
     moonCount: (n: number) => (n === 1 ? '1' : n >= 90 ? `More than ${Math.floor(n / 10) * 10}` : String(n)),
     dwarfPlanet: 'A dwarf planet, not one of the eight',
     orderFromSun: (n: number) => `${n}${n === 1 ? 'st' : n === 2 ? 'nd' : n === 3 ? 'rd' : 'th'} planet from the Sun`,
+    continentFilter: 'Continent',
+    allContinents: 'All continents',
+    categoryFilter: 'Category',
+    allCategories: 'All',
+    categories: { river: 'Rivers', ocean: 'Oceans', volcano: 'Volcanoes', rock: 'Rocks' } satisfies Record<EarthCategory, string>,
+    foundNear: 'Rivers and volcanoes here:',
+    whereIsIt: 'Where it is:',
   },
   streak: {
     days: (n: number): string => (n === 1 ? 'day in a row' : 'days in a row'),
