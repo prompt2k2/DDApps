@@ -92,6 +92,28 @@ domain (simple government symbols) or released by their Commons uploader under a
 | animals/seal.jpg | Charles J. Sharp | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Common_seal_(Phoca_vitulina)_2.jpg |
 | animals/swan.jpg | Sanchezn | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:CygneVaires.jpg |
 | animals/mouse.jpg | Unknown authorUnknown author (original) / Ilmari Karonen (editing) | Public domain | https://commons.wikimedia.org/wiki/File:Mouse_white_background.jpg |
+| earth/nile.jpg | Fiktube | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Beautiful_nature_along_Nile_River_01.jpg |
+| earth/amazon.jpg | European Space Agency | CC BY-SA 3.0 igo | https://commons.wikimedia.org/wiki/File:Amazon_River_ESA387332.jpg |
+| earth/yangtze.jpg | Andrew Hitchcock | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Dusk_on_the_Yangtze_River.jpg |
+| earth/mississippi.jpg | NPS photo | Public domain | https://commons.wikimedia.org/wiki/File:Efmo_View_from_Fire_Point.jpg |
+| earth/danube.jpg | Visions of Domino | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:View_from_Gell%C3%A9rt_Hill_to_the_Danube,_Hungary_-_Budapest_(28493220635).jpg |
+| earth/niger.jpg | NigerTZai | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Niger,_Niamey,_Pont_Kennedy_(1).jpg |
+| earth/ganges.jpg | Babasteve | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Varanasiganga.jpg |
+| earth/pacific.png | CIA World Factbook | Public domain | https://commons.wikimedia.org/wiki/File:Pacific_Ocean_-_en.png |
+| earth/atlantic.png | CIA | Public domain | https://commons.wikimedia.org/wiki/File:Atlantic_Ocean_-_en.png |
+| earth/indian-ocean.png | United States Central Intelligence Agency | Public domain | https://commons.wikimedia.org/wiki/File:Indian_Ocean-CIA_WFB_Map.png |
+| earth/southern-ocean.png | Connormah (talk · contribs) | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Location_Southern_Ocean.svg |
+| earth/arctic.png | CIA | Public domain | https://commons.wikimedia.org/wiki/File:Arctic_Ocean_-_en.png |
+| earth/vesuvius.jpg | pietro scerrato | CC BY 3.0 | https://commons.wikimedia.org/wiki/File:Il_cratere_del_Vulcano_-_panoramio.jpg |
+| earth/krakatoa.jpg | Lithograph: Parker & Coward, Britain; | Public domain | https://commons.wikimedia.org/wiki/File:Krakatoa_eruption_lithograph.jpg |
+| earth/maunaloa.jpg | J.D. Griggs | Public domain | https://commons.wikimedia.org/wiki/File:Mauna_Loa_Volcano.jpg |
+| earth/sthelens.jpg | Lyn Topinka | Public domain | https://commons.wikimedia.org/wiki/File:MSH82_st_helens_plume_from_harrys_ridge_05-19-82.jpg |
+| earth/etna.jpg | BenAveling | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Mt_Etna_and_Catania1.jpg |
+| earth/popocatepetl.jpg | Jakub Hejtmánek | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Mexico-Popocatepetl.jpg |
+| earth/igneous.jpg | James St. John | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Basalt_12_(48674276333).jpg |
+| earth/sedimentary.jpg | Michael C. Rygel | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Channel-StellartonFm-CoalburnPit.JPG |
+| earth/metamorphic.jpg | No machine-readable author provided. Siim assumed (based on copyright claims). | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Quartzite.jpg |
+| maps/world.svg (not resized, original vector) | STyx | Public domain | https://commons.wikimedia.org/wiki/File:World_location_map.svg |
 | planets/mercury.jpg | NASA/Johns Hopkins University Applied Physics Laboratory/Arizona State University/Carnegie Institution of Washington | Public domain | https://commons.wikimedia.org/wiki/File:Mercury_in_true_color.jpg |
 | planets/venus.jpg | NASA/JPL-Caltech | Public domain | https://commons.wikimedia.org/wiki/File:Venus_from_Mariner_10.jpg |
 | planets/earth.jpg | NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans | Public domain | https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg |
