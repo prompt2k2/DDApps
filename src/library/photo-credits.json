@@ -946,5 +946,119 @@
     "licence": "CC BY-SA 2.0",
     "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Antarctica_Landscape.jpg"
+  },
+  "mediterranean-sea": {
+    "author": "of the modification : Eric Gaba (Sting)",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Mediterranean_Sea_16.61811E_38.99124N.jpg"
+  },
+  "red-sea": {
+    "author": "Eric Gaba (Sting - fr:Sting)",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Red_Sea_topographic_map-en.svg"
+  },
+  "black-sea": {
+    "author": "The SeaWiFS Project",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Danube_Spills_into_the_Black_Sea.jpg"
+  },
+  "north-sea": {
+    "author": "MODIS Rapid Response Team, NASA/GSFC",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:NASA_NorthSea1_2.jpg"
+  },
+  "everest": {
+    "author": "Rdevany",
+    "licence": "CC BY-SA 3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mt._Everest_from_Gokyo_Ri_November_5,_2012.jpg"
+  },
+  "k2": {
+    "author": "Zacharie Grossen",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Chogori.jpg"
+  },
+  "denali": {
+    "author": "Denali National Park and Preserve",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Wonder_Lake_and_Denali.jpg"
+  },
+  "matterhorn": {
+    "author": "Photo: chil, on Camptocamp.org Derivative work:Zacharie Grossen",
+    "licence": "CC BY-SA 3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Matterhorn_from_Domh%C3%BCtte_-_2.jpg"
+  },
+  "ben-nevis": {
+    "author": "Thincat",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:BenNevis2005.jpg"
+  },
+  "tibetan-plateau": {
+    "author": "NASA",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Himalaya_composite.jpg"
+  },
+  "colorado-plateau": {
+    "author": "Ken Lund from Reno, Nevada, USA",
+    "licence": "CC BY-SA 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Colorful_Colorado_Plateau,_Arches_National_Park,_Utah_(2438763345).jpg"
+  },
+  "deccan-plateau": {
+    "author": "PadFoot2008",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Deccan,_India.png"
+  },
+  "sahara": {
+    "author": "Project Apollo Archive",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Sahara_real_color.jpg"
+  },
+  "gobi": {
+    "author": "Unknown",
+    "licence": "CC BY-SA 3.0",
+    "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Gobi_Desert.jpg"
+  },
+  "kalahari": {
+    "author": "Emilfarb at English Wikipedia",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Kalahari.png"
+  },
+  "lake-baikal": {
+    "author": "Jacques Descloitres, MODIS Land Rapid Response Team, NASA/GSFC",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Baikal.A2001296.0420.250m-NASA.jpg"
+  },
+  "lake-victoria": {
+    "author": "Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:ISS042-E-263206_-_View_of_Earth.jpg"
+  },
+  "caspian-sea": {
+    "author": "Jeff Schmaltz, MODIS Rapid Response Team, NASA/GSFC",
+    "licence": "Public domain",
+    "licenceUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Caspian_Sea_from_orbit.jpg"
+  },
+  "caribbean-sea": {
+    "author": "Clem Onojeghuo clemono2",
+    "licence": "CC0",
+    "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Caribbean_Sea_(Unsplash).jpg"
   }
 }

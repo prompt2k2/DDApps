@@ -163,8 +163,10 @@ export const en = {
     allContinents: 'All continents',
     categoryFilter: 'Category',
     allCategories: 'All',
-    categories: { river: 'Rivers', ocean: 'Oceans', volcano: 'Volcanoes', rock: 'Rocks' } satisfies Record<EarthCategory, string>,
-    foundNear: 'Rivers and volcanoes here:',
+    categories: {
+      river: 'Rivers', ocean: 'Oceans', sea: 'Seas', mountain: 'Mountains', plateau: 'Plateaus', desert: 'Deserts', lake: 'Lakes', volcano: 'Volcanoes', rock: 'Rocks',
+    } satisfies Record<EarthCategory, string>,
+    foundNear: 'Nearby:',
     whereIsIt: 'Where it is:',
   },
   streak: {

@@ -159,8 +159,10 @@ export const de: Strings = {
     allContinents: 'Alle Kontinente',
     categoryFilter: 'Kategorie',
     allCategories: 'Alle',
-    categories: { river: 'Flüsse', ocean: 'Ozeane', volcano: 'Vulkane', rock: 'Gesteine' },
-    foundNear: 'Flüsse und Vulkane hier:',
+    categories: {
+      river: 'Flüsse', ocean: 'Ozeane', sea: 'Meere', mountain: 'Berge', plateau: 'Hochebenen', desert: 'Wüsten', lake: 'Seen', volcano: 'Vulkane', rock: 'Gesteine',
+    },
+    foundNear: 'In der Nähe:',
     whereIsIt: 'Wo es ist:',
   },
   streak: {

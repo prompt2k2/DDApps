@@ -114,6 +114,25 @@ domain (simple government symbols) or released by their Commons uploader under a
 | earth/sedimentary.jpg | Michael C. Rygel | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Channel-StellartonFm-CoalburnPit.JPG |
 | earth/metamorphic.jpg | No machine-readable author provided. Siim assumed (based on copyright claims). | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Quartzite.jpg |
 | earth/antarctica.jpg | Pedro Szekely | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Antarctica_Landscape.jpg |
+| earth/mediterranean-sea.jpg | of the modification : Eric Gaba (Sting) | Public domain | https://commons.wikimedia.org/wiki/File:Mediterranean_Sea_16.61811E_38.99124N.jpg |
+| earth/red-sea.png | Eric Gaba (Sting - fr:Sting) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Red_Sea_topographic_map-en.svg |
+| earth/caribbean-sea.jpg | Clem Onojeghuo clemono2 | CC0 | https://commons.wikimedia.org/wiki/File:Caribbean_Sea_(Unsplash).jpg |
+| earth/black-sea.jpg | The SeaWiFS Project | Public domain | https://commons.wikimedia.org/wiki/File:The_Danube_Spills_into_the_Black_Sea.jpg |
+| earth/north-sea.jpg | MODIS Rapid Response Team, NASA/GSFC | Public domain | https://commons.wikimedia.org/wiki/File:NASA_NorthSea1_2.jpg |
+| earth/everest.jpg | Rdevany | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Mt._Everest_from_Gokyo_Ri_November_5,_2012.jpg |
+| earth/k2.jpg | Zacharie Grossen | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Chogori.jpg |
+| earth/denali.jpg | Denali National Park and Preserve | Public domain | https://commons.wikimedia.org/wiki/File:Wonder_Lake_and_Denali.jpg |
+| earth/matterhorn.jpg | Photo: chil, on Camptocamp.org Derivative work:Zacharie Grossen | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Matterhorn_from_Domh%C3%BCtte_-_2.jpg |
+| earth/ben-nevis.jpg | Thincat | Public domain | https://commons.wikimedia.org/wiki/File:BenNevis2005.jpg |
+| earth/tibetan-plateau.jpg | NASA | Public domain | https://commons.wikimedia.org/wiki/File:Himalaya_composite.jpg |
+| earth/colorado-plateau.jpg | Ken Lund from Reno, Nevada, USA | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Colorful_Colorado_Plateau,_Arches_National_Park,_Utah_(2438763345).jpg |
+| earth/deccan-plateau.png | PadFoot2008 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Deccan,_India.png |
+| earth/sahara.jpg | Project Apollo Archive | Public domain | https://commons.wikimedia.org/wiki/File:Sahara_real_color.jpg |
+| earth/gobi.jpg | Unknown | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Gobi_Desert.jpg |
+| earth/kalahari.png | Emilfarb at English Wikipedia | Public domain | https://commons.wikimedia.org/wiki/File:Kalahari.png |
+| earth/lake-baikal.jpg | Jacques Descloitres, MODIS Land Rapid Response Team, NASA/GSFC | Public domain | https://commons.wikimedia.org/wiki/File:Baikal.A2001296.0420.250m-NASA.jpg |
+| earth/lake-victoria.jpg | Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center | Public domain | https://commons.wikimedia.org/wiki/File:ISS042-E-263206_-_View_of_Earth.jpg |
+| earth/caspian-sea.jpg | Jeff Schmaltz, MODIS Rapid Response Team, NASA/GSFC | Public domain | https://commons.wikimedia.org/wiki/File:Caspian_Sea_from_orbit.jpg |
 | maps/world.svg (not resized, original vector) | STyx | Public domain | https://commons.wikimedia.org/wiki/File:World_location_map.svg |
 | planets/mercury.jpg | NASA/Johns Hopkins University Applied Physics Laboratory/Arizona State University/Carnegie Institution of Washington | Public domain | https://commons.wikimedia.org/wiki/File:Mercury_in_true_color.jpg |
 | planets/venus.jpg | NASA/JPL-Caltech | Public domain | https://commons.wikimedia.org/wiki/File:Venus_from_Mariner_10.jpg |

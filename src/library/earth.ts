@@ -1,16 +1,17 @@
 import type { Lang } from '@/i18n'
 
-// Physical geography: rivers, oceans, volcanoes and rock types, each with a real photo
-// (public/photos/earth/<id>.jpg, credits in photo-credits.json) and two short facts in each language.
-// Rivers and volcanoes are tied to the country/countries they're in (ids from lessons/data.ts COUNTRIES),
-// so a country's library card can mention what's nearby. Oceans and rock types have no single country.
+// Physical geography: rivers, oceans, seas, mountains, plateaus, deserts, lakes, volcanoes and rock types,
+// each with a real photo (public/photos/earth/<id>.jpg, credits in photo-credits.json) and two short facts in
+// each language. Some are tied to the country/countries they're in or next to (ids from lessons/data.ts
+// COUNTRIES), so a country's library card can mention what's nearby; left out where no single country fits
+// well (e.g. Everest, which is in Nepal — not in the app's country list — not just a quirk of this list).
 
-export type EarthCategory = 'river' | 'ocean' | 'volcano' | 'rock'
+export type EarthCategory = 'river' | 'ocean' | 'sea' | 'mountain' | 'plateau' | 'desert' | 'lake' | 'volcano' | 'rock'
 
 export interface EarthEntry {
   id: string
   category: EarthCategory
-  /** Country id(s) from COUNTRIES this is in or right next to (rivers, volcanoes only). */
+  /** Country id(s) from COUNTRIES this is in or right next to, where one or a few clearly fit. */
   countries?: string[]
   text: Record<Lang, { name: string; about: string }>
 }
@@ -73,6 +74,87 @@ export const EARTH: EarthEntry[] = [
     ['The Arctic Ocean', 'The smallest and coldest ocean, around the North Pole.'],
     ['Der Arktische Ozean', 'Der kleinste und kälteste Ozean, rund um den Nordpol.'],
     ['L’océan Arctique', 'Le plus petit et le plus froid des océans, autour du pôle Nord.']),
+  // Seas
+  e('mediterranean-sea', 'sea', ['it', 'es', 'fr', 'eg', 'ma'],
+    ['The Mediterranean Sea', 'A sea between Europe, Africa and Asia, almost closed in by land. Ancient Egyptians, Greeks and Romans all sailed and traded across it.'],
+    ['Das Mittelmeer', 'Ein Meer zwischen Europa, Afrika und Asien, fast ganz von Land umschlossen. Alte Ägypter, Griechen und Römer segelten und handelten alle darüber.'],
+    ['La mer Méditerranée', 'Une mer entre l’Europe, l’Afrique et l’Asie, presque entièrement entourée de terres. Les Égyptiens, les Grecs et les Romains de l’Antiquité y naviguaient et y commerçaient tous.']),
+  e('red-sea', 'sea', ['eg'],
+    ['The Red Sea', 'A long, narrow sea between Africa and Asia, famous for its colourful coral reefs. Egypt lies along its western coast.'],
+    ['Das Rote Meer', 'Ein langes, schmales Meer zwischen Afrika und Asien, berühmt für seine bunten Korallenriffe. Ägypten liegt an seiner Westküste.'],
+    ['La mer Rouge', 'Une mer longue et étroite entre l’Afrique et l’Asie, célèbre pour ses récifs coralliens colorés. L’Égypte borde sa côte ouest.']),
+  e('caribbean-sea', 'sea', ['mx'],
+    ['The Caribbean Sea', 'A warm sea in the Americas, dotted with thousands of islands. Pirates once sailed its waters, and it’s still famous for coral reefs today.'],
+    ['Das Karibische Meer', 'Ein warmes Meer in Amerika, übersät mit Tausenden von Inseln. Früher segelten hier Piraten, und es ist noch heute für seine Korallenriffe berühmt.'],
+    ['La mer des Caraïbes', 'Une mer chaude en Amérique, parsemée de milliers d’îles. Des pirates y naviguaient autrefois, et elle est encore célèbre aujourd’hui pour ses récifs coralliens.']),
+  e('black-sea', 'sea', ['ua'],
+    ['The Black Sea', 'A sea between Europe and Asia, almost cut off from the oceans. Ukraine lies along its northern shore.'],
+    ['Das Schwarze Meer', 'Ein Meer zwischen Europa und Asien, fast von den Weltmeeren abgeschnitten. Die Ukraine liegt an seiner Nordküste.'],
+    ['La mer Noire', 'Une mer entre l’Europe et l’Asie, presque coupée des océans. L’Ukraine borde sa côte nord.']),
+  e('north-sea', 'sea', ['gb', 'nl', 'de', 'dk'],
+    ['The North Sea', 'A sea between Great Britain and northern Europe, busy with ships and fishing boats. Oil and gas are also pumped up from beneath it.'],
+    ['Die Nordsee', 'Ein Meer zwischen Großbritannien und Nordeuropa, stark befahren von Schiffen und Fischerbooten. Auch Öl und Gas werden von dort unten heraufgepumpt.'],
+    ['La mer du Nord', 'Une mer entre la Grande-Bretagne et le nord de l’Europe, animée par les navires et les bateaux de pêche. On y pompe aussi du pétrole et du gaz depuis les fonds marins.']),
+  // Mountains
+  e('everest', 'mountain', undefined,
+    ['Mount Everest', 'The tallest mountain on Earth, high in the Himalayas. Its peak is so high that climbers often need bottled oxygen to breathe.'],
+    ['Der Mount Everest', 'Der höchste Berg der Erde, hoch im Himalaya. Sein Gipfel ist so hoch, dass Bergsteiger oft Sauerstoffflaschen zum Atmen brauchen.'],
+    ['L’Everest', 'La plus haute montagne de la Terre, tout en haut de l’Himalaya. Son sommet est si haut que les alpinistes ont souvent besoin de bouteilles d’oxygène pour respirer.']),
+  e('k2', 'mountain', undefined,
+    ['K2', 'The second-tallest mountain on Earth, and one of the hardest to climb. It’s sometimes called the “Savage Mountain”.'],
+    ['Der K2', 'Der zweithöchste Berg der Erde und einer der schwierigsten zum Besteigen. Er wird manchmal der „wilde Berg“ genannt.'],
+    ['Le K2', 'La deuxième plus haute montagne de la Terre, et l’une des plus difficiles à gravir. On l’appelle parfois la « montagne sauvage ».']),
+  e('denali', 'mountain', ['us'],
+    ['Denali', 'The tallest mountain in North America, in Alaska. Its name means “the tall one” in the local Koyukon language.'],
+    ['Der Denali', 'Der höchste Berg Nordamerikas, in Alaska. Sein Name bedeutet in der Sprache der Koyukon „der Hohe“.'],
+    ['Le Denali', 'La plus haute montagne d’Amérique du Nord, en Alaska. Son nom signifie « le grand » dans la langue locale koyukon.']),
+  e('matterhorn', 'mountain', ['ch', 'it'],
+    ['The Matterhorn', 'A famous, pyramid-shaped mountain on the border of Switzerland and Italy. It’s one of the most photographed mountains in the world.'],
+    ['Das Matterhorn', 'Ein berühmter, pyramidenförmiger Berg an der Grenze zwischen der Schweiz und Italien. Er ist einer der meistfotografierten Berge der Welt.'],
+    ['Le Cervin', 'Une montagne célèbre en forme de pyramide, à la frontière entre la Suisse et l’Italie. C’est l’une des montagnes les plus photographiées au monde.']),
+  e('ben-nevis', 'mountain', ['gb'],
+    ['Ben Nevis', 'The tallest mountain in the United Kingdom, in Scotland. On a clear day, walkers can see for many kilometres from the top.'],
+    ['Der Ben Nevis', 'Der höchste Berg im Vereinigten Königreich, in Schottland. An einem klaren Tag können Wanderer vom Gipfel aus viele Kilometer weit sehen.'],
+    ['Le Ben Nevis', 'La plus haute montagne du Royaume-Uni, en Écosse. Par temps clair, les randonneurs peuvent voir à des kilomètres depuis le sommet.']),
+  // Plateaus
+  e('tibetan-plateau', 'plateau', ['cn'],
+    ['The Tibetan Plateau', 'A huge, high area of flat land in Asia, so high up it’s called the “Roof of the World”.'],
+    ['Das Tibetische Hochland', 'Ein riesiges, hoch gelegenes Flachland in Asien, so hoch, dass es das „Dach der Welt“ genannt wird.'],
+    ['Le plateau tibétain', 'Une immense étendue de terre plate et élevée en Asie, si haute qu’on l’appelle le « toit du monde ».']),
+  e('colorado-plateau', 'plateau', ['us'],
+    ['The Colorado Plateau', 'A high, dry area of the United States where rivers have carved deep canyons, including the Grand Canyon.'],
+    ['Das Colorado-Plateau', 'Ein hoch gelegenes, trockenes Gebiet in den USA, wo Flüsse tiefe Schluchten gegraben haben, darunter der Grand Canyon.'],
+    ['Le plateau du Colorado', 'Une région élevée et aride des États-Unis où des rivières ont creusé de profonds canyons, dont le Grand Canyon.']),
+  e('deccan-plateau', 'plateau', ['in'],
+    ['The Deccan Plateau', 'A large, triangle-shaped area of raised land covering much of southern India.'],
+    ['Das Dekkan-Plateau', 'Ein großes, dreieckiges Hochland, das einen Großteil Südindiens bedeckt.'],
+    ['Le plateau du Deccan', 'Une vaste région surélevée en forme de triangle qui couvre une grande partie du sud de l’Inde.']),
+  // Deserts
+  e('sahara', 'desert', ['eg', 'ma'],
+    ['The Sahara', 'The biggest hot desert in the world, stretching across the top of Africa. Despite the sand, a few plants and animals survive there.'],
+    ['Die Sahara', 'Die größte heiße Wüste der Welt, die sich über den Norden Afrikas erstreckt. Trotz des Sandes überleben dort ein paar Pflanzen und Tiere.'],
+    ['Le Sahara', 'Le plus grand désert chaud du monde, qui s’étend sur le nord de l’Afrique. Malgré le sable, quelques plantes et animaux y survivent.']),
+  e('gobi', 'desert', ['cn'],
+    ['The Gobi Desert', 'A huge, cold desert in Asia, where temperatures can be freezing in winter and very hot in summer.'],
+    ['Die Wüste Gobi', 'Eine riesige, kalte Wüste in Asien, in der die Temperaturen im Winter eisig und im Sommer sehr heiß sein können.'],
+    ['Le désert de Gobi', 'Un immense désert froid en Asie, où les températures peuvent être glaciales en hiver et très chaudes en été.']),
+  e('kalahari', 'desert', ['za'],
+    ['The Kalahari Desert', 'A big, sandy desert in southern Africa, home to the San people, who have lived there for thousands of years.'],
+    ['Die Kalahari-Wüste', 'Eine große, sandige Wüste im südlichen Afrika, Heimat der San, die dort seit Tausenden von Jahren leben.'],
+    ['Le désert du Kalahari', 'Un grand désert sablonneux du sud de l’Afrique, où vit le peuple san, installé là depuis des milliers d’années.']),
+  // Lakes
+  e('lake-baikal', 'lake', undefined,
+    ['Lake Baikal', 'The deepest lake in the world, in Siberia. It holds more fresh water than all of North America’s Great Lakes put together.'],
+    ['Der Baikalsee', 'Der tiefste See der Welt, in Sibirien. Er enthält mehr Süßwasser als alle Großen Seen Nordamerikas zusammen.'],
+    ['Le lac Baïkal', 'Le lac le plus profond du monde, en Sibérie. Il contient plus d’eau douce que tous les Grands Lacs d’Amérique du Nord réunis.']),
+  e('lake-victoria', 'lake', ['ke'],
+    ['Lake Victoria', 'Africa’s biggest lake, bordered by Kenya, Uganda and Tanzania. Millions of people depend on it for fishing and water.'],
+    ['Der Victoriasee', 'Afrikas größter See, an den Kenia, Uganda und Tansania grenzen. Millionen Menschen sind für Fischfang und Wasser auf ihn angewiesen.'],
+    ['Le lac Victoria', 'Le plus grand lac d’Afrique, bordé par le Kenya, l’Ouganda et la Tanzanie. Des millions de personnes en dépendent pour la pêche et l’eau.']),
+  e('caspian-sea', 'lake', undefined,
+    ['The Caspian Sea', 'Even though it’s called a sea, this is actually the biggest lake in the world, between Europe and Asia.'],
+    ['Das Kaspische Meer', 'Obwohl es Meer genannt wird, ist dies eigentlich der größte See der Welt, zwischen Europa und Asien.'],
+    ['La mer Caspienne', 'Même si on l’appelle « mer », c’est en réalité le plus grand lac du monde, entre l’Europe et l’Asie.']),
   // Volcanoes
   e('vesuvius', 'volcano', ['it'],
     ['Mount Vesuvius', 'A volcano in Italy that buried the Roman city of Pompeii in ash nearly 2,000 years ago.'],
@@ -114,7 +196,7 @@ export const EARTH: EarthEntry[] = [
 ]
 
 /** The oceans came through as PNG maps (there's no single "photo" of an ocean); everything else is JPEG. */
-const PNG = new Set(['pacific', 'atlantic', 'indian-ocean', 'southern-ocean', 'arctic'])
+const PNG = new Set(['pacific', 'atlantic', 'indian-ocean', 'southern-ocean', 'arctic', 'red-sea', 'deccan-plateau', 'kalahari'])
 
 /** Photo address of an Earth entry (relative to the app). */
 export const earthPhoto = (id: string) => `photos/earth/${id}.${PNG.has(id) ? 'png' : 'jpg'}`

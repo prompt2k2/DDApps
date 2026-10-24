@@ -21,7 +21,7 @@ import './Library.css'
 
 export type Shelf = 'animals' | 'places' | 'countries' | 'planets' | 'earth'
 const SHELF_EMOJI: Record<Shelf, string> = { animals: 'paws', places: 'map', countries: 'globe', planets: 'moon', earth: 'mountain' }
-const EARTH_CATEGORIES: EarthCategory[] = ['river', 'ocean', 'volcano', 'rock']
+const EARTH_CATEGORIES: EarthCategory[] = ['river', 'ocean', 'sea', 'mountain', 'plateau', 'desert', 'lake', 'volcano', 'rock']
 
 interface Entry {
   id: string
