@@ -312,8 +312,6 @@ export const fr: Strings = {
     welcomeText: 'Un écran d’accueil pour apprendre : les missions rapportent des étoiles, les étoiles du temps d’écran.',
     welcomeStars: 'Les leçons suivent la classe de votre enfant et deviennent plus difficiles au fil des progrès.',
     setUp: 'Configurer',
-    tryDemo: 'Essayer la démo',
-    restore: 'Restaurer une sauvegarde',
     stepOf: (n: number, of: number) => `Étape ${n} sur ${of}`,
     childTitle: 'Votre enfant',
     nameLabel: 'Prénom ou surnom',

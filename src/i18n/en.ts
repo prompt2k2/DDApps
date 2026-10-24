@@ -316,8 +316,6 @@ export const en = {
     welcomeText: 'A learning home screen for your child: missions earn stars, stars earn screen time.',
     welcomeStars: 'Lessons follow your child’s school class and get harder as they learn.',
     setUp: 'Set up',
-    tryDemo: 'Try the demo',
-    restore: 'Restore from backup',
     stepOf: (n: number, of: number) => `Step ${n} of ${of}`,
     childTitle: 'About your child',
     nameLabel: 'First name or nickname',

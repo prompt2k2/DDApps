@@ -1,23 +1,22 @@
 import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { type ChangeEvent, useRef, useState } from 'react'
+import { useState } from 'react'
 import { starterAccess } from '@/access/access'
 import { useStudio } from '@/app/studio'
-import { BackupError, parseBackup, restoreBackup } from '@/data/backup'
 import { requestPersistence } from '@/data/persist'
-import { LANGS, useLang, useT } from '@/i18n'
+import { useT } from '@/i18n'
 import { guessSystem } from '@/lessons/classes'
 import { AccessEditor, ChildEditor } from '@/parent/editors'
 import { ParentGate } from '@/parent/ParentGate'
 import { Emoji } from '@/shared/Emoji'
-import { startDemo } from './demo'
 import './Setup.css'
 
 type Step = 'welcome' | 'child' | 'pin' | 'access' | 'done'
 const STEPS: Step[] = ['welcome', 'child', 'pin', 'access', 'done']
 
 /**
- * First start: set up (child → parent PIN → what is switched on), try the demo, or restore a backup.
- * Everything typed here is saved on this device only.
+ * First start: set up (child → parent PIN → what is switched on). A one-time, one-child setup — no demo and
+ * no restore-from-backup entry point here (backup/restore lives permanently in Parents → Backup instead, and
+ * the app's own `?demo` link still works for a quick look without changing this).
  */
 export function SetupWizard() {
   const t = useT()
@@ -127,40 +126,8 @@ function Nav({ onBack, onNext, nextDisabled, nextLabel }: { onBack: () => void; 
 
 function Welcome({ onStart }: { onStart: () => void }) {
   const t = useT()
-  const lang = useLang()
-  const { settings, updateSettings } = useStudio()
-  const file = useRef<HTMLInputElement>(null)
-  const [error, setError] = useState('')
-  const [busy, setBusy] = useState(false)
-
-  const demo = async () => {
-    setBusy(true)
-    await startDemo(settings.lang)
-  }
-  const restore = async (e: ChangeEvent<HTMLInputElement>) => {
-    const f = e.target.files?.[0]
-    e.target.value = ''
-    if (!f) return
-    try {
-      const b = parseBackup(await f.text())
-      setBusy(true)
-      await restoreBackup(b)
-      void requestPersistence()
-      location.reload()
-    } catch (err) {
-      setError(err instanceof BackupError ? t.backup.errors[err.message as keyof typeof t.backup.errors] ?? t.backup.errors.other : t.backup.errors.other)
-    }
-  }
-
   return (
     <div className="welcome">
-      <div className="segmented welcome-lang" role="radiogroup" aria-label={t.language.label}>
-        {LANGS.map((l) => (
-          <button key={l.id} role="radio" aria-checked={lang === l.id} lang={l.id} className={lang === l.id ? '' : 'secondary'} onClick={() => updateSettings((s) => ({ ...s, lang: l.id }))}>
-            {l.name}
-          </button>
-        ))}
-      </div>
       <img src={`${import.meta.env.BASE_URL}icons/icon.svg`} alt="" width={120} height={120} />
       <h1>{t.appName}</h1>
       <p>{t.setup.welcomeText}</p>
@@ -173,22 +140,10 @@ function Welcome({ onStart }: { onStart: () => void }) {
         </li>
       </ul>
       <div className="welcome-actions">
-        <button onClick={onStart} disabled={busy}>
+        <button onClick={onStart}>
           {t.setup.setUp} <ArrowRight />
         </button>
-        <button className="secondary" onClick={() => void demo()} disabled={busy}>
-          <Emoji name="sparkles" size={26} /> {t.setup.tryDemo}
-        </button>
-        <button className="secondary" onClick={() => file.current?.click()} disabled={busy}>
-          <Emoji name="memo" size={26} /> {t.setup.restore}
-        </button>
-        <input ref={file} type="file" accept=".json,application/json" hidden onChange={(e) => void restore(e)} />
       </div>
-      {error && (
-        <p className="parent-error" role="alert">
-          {error}
-        </p>
-      )}
       <small className="muted">{t.developedBy}</small>
     </div>
   )

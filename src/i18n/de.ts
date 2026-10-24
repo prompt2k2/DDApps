@@ -312,8 +312,6 @@ export const de: Strings = {
     welcomeText: 'Ein Lern-Startbildschirm für Ihr Kind: Missionen bringen Sterne, Sterne bringen Bildschirmzeit.',
     welcomeStars: 'Die Lektionen folgen der Klasse Ihres Kindes und werden schwerer, während es lernt.',
     setUp: 'Einrichten',
-    tryDemo: 'Demo ausprobieren',
-    restore: 'Aus Sicherung wiederherstellen',
     stepOf: (n: number, of: number) => `Schritt ${n} von ${of}`,
     childTitle: 'Über Ihr Kind',
     nameLabel: 'Vorname oder Spitzname',
