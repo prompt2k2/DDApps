@@ -1,4 +1,5 @@
 import type { ItemGroup, ItemId } from '@/access/catalogue'
+import type { RoutineActivityId, RoutineSchedule } from '@/data/types'
 import type { SchoolSystem } from '@/lessons/classes'
 import type { ThemeMode } from '@/shared/theme'
 
@@ -21,6 +22,7 @@ export const en = {
   },
   nav: {
     home: 'Home',
+    routine: 'Routine',
     learn: 'Learn',
     games: 'Games',
     media: 'Media',
@@ -201,6 +203,42 @@ export const en = {
     explain:
       'On/Off: switched-off items are hidden from your child. Earn: opens with earned time (missions → stars → minutes). Open: always open. Hold a locked tile for 2 seconds to unlock it for today with your PIN.',
   },
+  routine: {
+    tabs: { today: 'Today', progress: 'Progress' },
+    activities: {
+      brushTeeth: 'Brush teeth',
+      makeBed: 'Make bed',
+      breakfast: 'Breakfast',
+      bath: 'Bath',
+      vitaminC: 'Vitamin C',
+      uniformOn: 'Put on school uniform',
+      readBook1: 'Read a book',
+      uniformOff: 'Take off school uniform',
+      device1: 'Use my device',
+      lunch: 'Eat lunch',
+      device2: 'Use my device',
+      readBook2: 'Read a book',
+    } satisfies Record<RoutineActivityId, string>,
+    schedule: { everyday: 'Every day', schooldays: 'School days' } satisfies Record<RoutineSchedule, string>,
+    doneOf: (done: number, total: number) => `${done} of ${total} done`,
+    allDone: 'All done for today!',
+    noneToday: 'Nothing on the list today.',
+    offNote: 'Switched off in Parents → Daily routine.',
+    table: { activity: 'Activity', month: 'Month', done: 'Done', possible: 'Possible', completion: 'Completion' },
+    monthTotal: 'Month total',
+    yearTotal: 'Year total',
+    enabledTitle: 'On the checklist',
+    customName: 'Activity name',
+    customPlaceholder: 'e.g. Water the plants',
+    addActivity: 'Add activity',
+    schoolDaysTitle: 'School days',
+    schoolDaysNote: 'Which weekdays count as school days. Used by "School days" activities.',
+    holidaysTitle: 'School holidays',
+    holidaysNote: 'Date ranges with no school (half-terms, breaks): "School days" activities are not due then.',
+    holidayName: 'Name',
+    holidayFrom: 'From',
+    holidayTo: 'To',
+  },
   parent: {
     enterPin: 'Parent PIN',
     createPin: 'Choose a parent PIN',
@@ -226,6 +264,7 @@ export const en = {
     birthdaysNote: 'Shown on the home screen as they come up. Only a name, day and month.',
     birthdayName: 'Name',
     day: 'Day',
+    routine: 'Daily routine',
     security: 'PIN and data',
     changePin: 'Change PIN',
     newRecoveryCode: 'New recovery code',

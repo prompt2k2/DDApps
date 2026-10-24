@@ -1,0 +1,53 @@
+/* The Routine tab: today's checklist (big tappable rows) and a Progress view (reuses .report-table). */
+.routine-screen {
+  height: 100%;
+  overflow-y: auto;
+  padding-bottom: 1rem;
+}
+.routine-today {
+  display: grid;
+  gap: 0.8rem;
+}
+.routine-alldone {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--display);
+  font-weight: 600;
+  color: var(--mint);
+}
+.routine-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+  gap: 0.8rem;
+}
+.routine-row {
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.7rem;
+  text-align: left;
+  min-height: 5rem;
+}
+.routine-row.done {
+  background: var(--mint-soft);
+}
+.routine-name {
+  font-family: var(--display);
+  font-weight: 600;
+  min-width: 0;
+}
+.routine-check {
+  font-size: 1.6rem;
+  color: var(--mint);
+  min-width: 1.6rem;
+  text-align: center;
+}
+.routine-progress .report-table {
+  margin-bottom: 0.4rem;
+}

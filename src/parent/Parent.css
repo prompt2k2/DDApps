@@ -233,6 +233,24 @@ button.danger {
   gap: 0.8rem;
 }
 
+/* Daily routine: activity rows reuse .access-row (same 4-column grid); the controls group fills one cell. */
+.routine-activity-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.holiday-add {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 0.5rem;
+  align-items: end;
+}
+@media (max-width: 760px) {
+  .holiday-add {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Family birthdays. */
 .birthday-list {
   list-style: none;

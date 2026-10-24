@@ -14,6 +14,7 @@ import { Emoji } from '@/shared/Emoji'
 import { AccessEditor, ChildEditor } from './editors'
 import { ParentGate, RecoveryCode } from './ParentGate'
 import { makePin, newRecoveryCode, normalizeCode } from './pin'
+import { RoutineEditor } from './RoutineEditor'
 import './Parent.css'
 
 /** The parent screen (behind the PIN): every setting, reports and backups. */
@@ -46,6 +47,9 @@ export function ParentScreen() {
       </Card>
       <Card emoji="cake" title={t.parent.birthdays}>
         <BirthdaysEditor />
+      </Card>
+      <Card emoji="calendar" title={t.parent.routine} wide>
+        <RoutineEditor />
       </Card>
       <Card emoji="gear" title={t.parent.security}>
         <SecurityCard />

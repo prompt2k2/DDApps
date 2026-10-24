@@ -1,7 +1,7 @@
 import { type ReactNode, useEffect, useState } from 'react'
 import { accessState, earnedSecondsLeft, withStarterAccess } from '@/access/access'
 import { useLocalDoc } from '@/data/localDoc'
-import { DEFAULT_SETTINGS, EMPTY_PROGRESS, EMPTY_USAGE, type Progress, type Settings, type Usage } from '@/data/types'
+import { DEFAULT_SETTINGS, EMPTY_PROGRESS, EMPTY_ROUTINE, EMPTY_USAGE, type Progress, type Routine, type Settings, type Usage } from '@/data/types'
 import { stageForAge } from '@/lessons/ladder'
 import { ageFrom, isoDate } from '@/shared/date'
 import { StudioContext, type StudioState } from './studio'
@@ -33,6 +33,7 @@ export function StudioData({ children }: { children: ReactNode }) {
   const settings = useLocalDoc<Settings>('settings', DEFAULT_SETTINGS)
   const progress = useLocalDoc<Progress>('progress', EMPTY_PROGRESS)
   const usage = useLocalDoc<Usage>('usage', EMPTY_USAGE)
+  const routine = useLocalDoc<Routine>('routine', EMPTY_ROUTINE)
   const today = isoDate(now)
   const age = ageFrom(settings.doc.child.birthMonth, settings.doc.child.birthYear, now)
   const stage = settings.doc.child.school?.stage ?? stageForAge(age)
@@ -50,7 +51,7 @@ export function StudioData({ children }: { children: ReactNode }) {
     age,
     stage,
     settings: s,
-    ready: settings.ready && progress.ready && usage.ready,
+    ready: settings.ready && progress.ready && usage.ready && routine.ready,
     // Every change starts from the same filled-in settings the screens show (a new item keeps its starter
     // setting when a parent first changes it, instead of starting from "off").
     updateSettings: (change) => settings.update((doc) => change(withStarterAccess(doc, ageFrom(doc.child.birthMonth, doc.child.birthYear, new Date())))),
@@ -58,6 +59,8 @@ export function StudioData({ children }: { children: ReactNode }) {
     updateProgress: progress.update,
     usage: usage.doc,
     updateUsage: usage.update,
+    routine: routine.doc,
+    updateRoutine: routine.update,
     earnedLeft,
     accessOf: (id) => accessState(s.access[id], today, earnedLeft),
   }

@@ -9,7 +9,7 @@ import type { Settings } from './types'
 export const BACKUP_APP = 'kids-learning-studio'
 export const BACKUP_FORMAT = 1
 /** The documents a backup may contain (anything else in a file is ignored). */
-export const BACKUP_KEYS = ['settings', 'progress', 'usage'] as const
+export const BACKUP_KEYS = ['settings', 'progress', 'usage', 'routine'] as const
 
 export interface BackupFile {
   app: typeof BACKUP_APP

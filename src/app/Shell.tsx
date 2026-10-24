@@ -9,7 +9,7 @@ import { type Screen, useStudio } from './studio'
 import './Shell.css'
 
 /** The menu. An entry shows when at least one of its items is switched on and ready (access layer 1). */
-const NAV: { id: Exclude<Screen, 'parents'>; emoji: string; group?: ItemGroup }[] = [
+const NAV: { id: Exclude<Screen, 'parents' | 'routine'>; emoji: string; group?: ItemGroup }[] = [
   { id: 'home', emoji: 'house' },
   { id: 'learn', emoji: 'gradcap', group: 'learning' },
   { id: 'games', emoji: 'joystick', group: 'games' },
@@ -30,10 +30,12 @@ export function Shell({ screen, title, onNavigate, parentsDot, children }: Props
   const t = useT()
   const { accessOf, settings } = useStudio()
   const shown = NAV.filter((n) => !n.group || itemsIn(n.group).some((id) => ITEMS[id].ready && accessOf(id) !== 'hidden'))
+  // Routine sits right after Home: it's a parent on/off flag, not part of the access/catalogue groups above.
+  const items: { id: Screen; emoji: string }[] = shown.flatMap((n) => (n.id === 'home' && settings.routine.enabled ? [n, { id: 'routine' as const, emoji: 'calendar' }] : [n]))
   return (
     <div className={`shell ${settings.demo ? 'with-banner' : ''}`}>
       <nav className="sidebar">
-        {shown.map((item) => (
+        {items.map((item) => (
           <button key={item.id} className={`nav-item ${screen === item.id ? 'active' : ''}`} onClick={() => onNavigate(item.id)}>
             <Emoji name={item.emoji} size={46} />
             <span>{t.nav[item.id]}</span>

@@ -25,6 +25,34 @@ export interface FamilyBirthday {
   day: number
 }
 
+/** A home routine activity (brush teeth, reading, screen time…): a daily checklist, separate from missions. */
+export type RoutineSchedule = 'everyday' | 'schooldays'
+
+export interface RoutineActivity {
+  id: string
+  /** A name in public/emoji. */
+  icon: string
+  schedule: RoutineSchedule
+  /** Off = hidden from the checklist (not deleted, so a parent can switch it back on). */
+  enabled: boolean
+  /** Built from the app (named via i18n `routine.activities`); false for a parent's own addition. */
+  builtin: boolean
+  /** Only set for a parent's own addition (builtin activities are named by `routine.activities[id]`). */
+  label?: string
+}
+
+/** A school holiday date range ("YYYY-MM-DD"), excluded from "School days" activities. */
+export interface RoutineHoliday {
+  id: string
+  start: string
+  end: string
+  label: string
+}
+
+/** The ids the app ships with, matching a paper daily checklist: hygiene, school uniform, reading, screen time. */
+export const ROUTINE_ACTIVITY_IDS = ['brushTeeth', 'makeBed', 'breakfast', 'bath', 'vitaminC', 'uniformOn', 'readBook1', 'uniformOff', 'device1', 'lunch', 'device2', 'readBook2'] as const
+export type RoutineActivityId = (typeof ROUTINE_ACTIVITY_IDS)[number]
+
 export interface Settings {
   /** The setup wizard has been finished (or a backup restored). */
   setupDone: boolean
@@ -75,6 +103,14 @@ export interface Settings {
     period: 'day' | 'week' | 'month'
   }
   birthdays: FamilyBirthday[]
+  routine: {
+    /** Shows the Routine tab in the menu. */
+    enabled: boolean
+    activities: RoutineActivity[]
+    /** Weekdays counted as school days, 0 (Sunday) to 6 (Saturday). Default Monday-Friday. */
+    schoolDays: number[]
+    holidays: RoutineHoliday[]
+  }
   /** Reading speed of the stories (1 = as recorded; 0.75 and 0.9 slower). Live radio always plays at 1. */
   storyRate: number
   /** Extra radio stations a parent added (any HTTPS audio stream). */
@@ -138,7 +174,37 @@ export interface Usage {
   updatedAt: number
 }
 
+/** The routine checklist, ticked per day ("YYYY-MM-DD" → activity id → done). */
+export interface Routine {
+  days: Record<string, Record<string, boolean>>
+  updatedAt: number
+}
+
 export const ACCENTS = ['#5b6cf0', '#e2557e', '#178c84', '#e08a1e', '#8b5cf6', '#22a06b'] as const
+
+/** Icon and schedule for each builtin activity; names come from i18n `routine.activities` at render time. */
+const ROUTINE_ICON_AND_SCHEDULE: Record<RoutineActivityId, { icon: string; schedule: RoutineSchedule }> = {
+  brushTeeth: { icon: 'sparkles', schedule: 'everyday' },
+  makeBed: { icon: 'moon', schedule: 'everyday' },
+  breakfast: { icon: 'cocoa', schedule: 'everyday' },
+  bath: { icon: 'droplet', schedule: 'everyday' },
+  vitaminC: { icon: 'tangerine', schedule: 'everyday' },
+  uniformOn: { icon: 'school', schedule: 'schooldays' },
+  readBook1: { icon: 'openbook', schedule: 'everyday' },
+  uniformOff: { icon: 'backpack', schedule: 'schooldays' },
+  device1: { icon: 'computer', schedule: 'everyday' },
+  lunch: { icon: 'fruit-apple', schedule: 'everyday' },
+  device2: { icon: 'tv', schedule: 'everyday' },
+  readBook2: { icon: 'scroll', schedule: 'everyday' },
+}
+
+export const DEFAULT_ROUTINE_ACTIVITIES: RoutineActivity[] = ROUTINE_ACTIVITY_IDS.map((id) => ({
+  id,
+  icon: ROUTINE_ICON_AND_SCHEDULE[id].icon,
+  schedule: ROUTINE_ICON_AND_SCHEDULE[id].schedule,
+  enabled: true,
+  builtin: true,
+}))
 
 export const DEFAULT_SETTINGS: Settings = {
   setupDone: false,
@@ -155,6 +221,7 @@ export const DEFAULT_SETTINGS: Settings = {
   rewards: { missionsPerDay: 3, questionsPerMission: 10, minutesPerStar: 10, maxMinutesPerDay: 45, weeklyGoal: 12, weeklyReward: '' },
   report: { email: '', period: 'week' },
   birthdays: [],
+  routine: { enabled: true, activities: DEFAULT_ROUTINE_ACTIVITIES, schoolDays: [1, 2, 3, 4, 5], holidays: [] },
   storyRate: 1,
   videoLibrary: true,
   stations: [],
@@ -168,3 +235,4 @@ export const EMPTY_PROGRESS: Progress = { stars: {}, missions: {}, scores: {}, a
 
 export const MAX_MISTAKES = 200
 export const EMPTY_USAGE: Usage = { days: {}, earnedUsed: {}, updatedAt: 0 }
+export const EMPTY_ROUTINE: Routine = { days: {}, updatedAt: 0 }

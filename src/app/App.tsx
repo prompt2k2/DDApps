@@ -10,6 +10,7 @@ import { PlayerProvider } from '@/media/PlayerProvider'
 import { ParentGate } from '@/parent/ParentGate'
 import { ParentScreen } from '@/parent/ParentScreen'
 import { addUsage, currentArea, TICK_SECONDS } from '@/progress/usage'
+import { RoutineScreen } from '@/routine/RoutineScreen'
 import { DEMO_PIN, startDemo } from '@/setup/demo'
 import { SetupWizard } from '@/setup/SetupWizard'
 import { setVoicePreference } from '@/audio/say'
@@ -107,6 +108,7 @@ function Screens() {
             }}
           />
         )}
+        {screen === 'routine' && <RoutineScreen />}
         {screen === 'learn' && <LearnScreen />}
         {screen === 'games' && <GamesScreen start={startGame} onStarted={() => setStartGame(null)} />}
         {screen === 'media' && <MediaScreen key={startListen ?? ''} start={startListen} />}
