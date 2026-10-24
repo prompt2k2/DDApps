@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { SUBJECTS } from '@/access/catalogue'
-import { A_AN, ANIMALS, COMMON_WORDS, COUNTRIES, flagPhoto, FRUITS, LANGUAGES, OPPOSITES, PAST_TENSES, PLURALS, WORDS } from './data'
+import { A_AN, ANIMALS, ANTARCTICA_TEXT, COMMON_WORDS, COUNTRIES, flagPhoto, FRUITS, LANGUAGES, OPPOSITES, PAST_TENSES, PLURALS, WORDS } from './data'
 import { UNCLEAR_EN } from './english'
 import { FACTS } from './facts'
 import type { Lang } from '@/i18n'
@@ -92,7 +92,8 @@ const FIXED_KEY: Record<string, string> = {
   'Which country is the biggest in the world?': 'Russia', 'Which is the longest river in Africa?': 'The Nile',
   'Which ocean lies between Europe and North America?': 'The Atlantic', 'Which country has the most people?': 'India',
   'Which is the biggest island in the world?': 'Greenland', 'Which country is shaped like a boot?': 'Italy',
-  'Where is the biggest rainforest in the world?': 'The Amazon', 'Which planet is the biggest?': 'Jupiter',
+  'Where is the biggest rainforest in the world?': 'The Amazon', 'Which continent has no countries of its own?': 'Antarctica',
+  'Which planet is the biggest?': 'Jupiter',
   'Which planet is closest to the Sun?': 'Mercury', 'Which planet is called the Red Planet?': 'Mars',
   'Which planet is famous for its big, bright rings?': 'Saturn', 'What is the Sun?': 'A star',
   'How long does the Earth take to go once around the Sun?': 'One year', 'Why do we have day and night?': 'The Earth turns around',
@@ -156,6 +157,11 @@ function check(step: string, q: Question, lang: Lang): string | null {
     case 'count-5':
     case 'count-10':
       return q.visual?.kind === 'emoji' && Number(label(r)) === q.visual.count ? null : 'wrong count'
+    case 'fraction-shapes': {
+      if (q.visual?.kind !== 'fraction') return 'no fraction shape shown'
+      const right_ = `${q.visual.shaded}/${q.visual.parts}`
+      return label(r) === right_ && !w.some((c) => label(c) === right_) ? null : 'wrong fraction for the shape'
+    }
     case 'which-animal': {
       const a = ANIMALS.find((x) => x.id === photoId(q.visual))
       const name = a && T.animals[a.id].name
@@ -434,6 +440,18 @@ describe('lesson content is right', () => {
       expect(new Set(names).size, lang).toBe(names.length)
       const earthNames = EARTH.map((x) => x.text[lang].name)
       expect(new Set(earthNames).size, lang).toBe(earthNames.length)
+    }
+  })
+
+  it('Antarctica has a photo, a credit and all three languages', () => {
+    const files = new Set(Object.keys({ ...import.meta.glob('/public/photos/**/*.jpg'), ...import.meta.glob('/public/photos/**/*.png') }).map((f) => f.replace('/public/', '')))
+    const credits = CREDITS as Record<string, { licence: string; source: string }>
+    expect(files.has('photos/earth/antarctica.jpg')).toBe(true)
+    expect(credits.antarctica?.source).toMatch(/^https:\/\/commons\.wikimedia\.org\//)
+    expect(credits.antarctica.licence).toMatch(/^(public domain|cc0|cc by(-sa)? \d)/i)
+    for (const lang of LANGS) {
+      const a = ANTARCTICA_TEXT[lang]
+      expect(a.name.length > 1 && a.fact1.length > 20 && a.fact2.length > 20, lang).toBe(true)
     }
   })
 

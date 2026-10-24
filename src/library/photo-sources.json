@@ -108,5 +108,6 @@
   {"id": "popocatepetl", "kind": "earth", "title": "Popocatépetl"},
   {"id": "igneous", "kind": "earth", "title": "Igneous rock", "file": "Basalt 12 (48674276333).jpg"},
   {"id": "sedimentary", "kind": "earth", "title": "Sedimentary rock"},
-  {"id": "metamorphic", "kind": "earth", "title": "Metamorphic rock"}
+  {"id": "metamorphic", "kind": "earth", "title": "Metamorphic rock"},
+  {"id": "antarctica", "kind": "earth", "title": "Antarctica", "file": "Antarctica Landscape.jpg"}
 ]

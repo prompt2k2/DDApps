@@ -201,6 +201,7 @@ function VisualView({ visual, big = false }: { visual: Visual; big?: boolean }) 
       </span>
     )
   }
+  if (visual.kind === 'fraction') return <FractionShape shape={visual.shape} parts={visual.parts} shaded={visual.shaded} size={big ? 160 : 90} />
   if (visual.count) {
     return (
       <span className="quiz-count">
@@ -211,4 +212,35 @@ function VisualView({ visual, big = false }: { visual: Visual; big?: boolean }) 
     )
   }
   return <Emoji name={visual.name} size={big ? 140 : 80} />
+}
+
+/** A circle of pie slices, or a bar of equal strips, with `shaded` of `parts` filled in. */
+function FractionShape({ shape, parts, shaded, size }: { shape: 'circle' | 'bar'; parts: number; shaded: number; size: number }) {
+  if (shape === 'bar') {
+    const h = size * 0.5
+    const segW = size / parts
+    return (
+      <svg width={size} height={h} viewBox={`0 0 ${size} ${h}`} className="fraction-shape" aria-hidden>
+        {Array.from({ length: parts }, (_, i) => (
+          <rect key={i} x={i * segW} y={0} width={segW} height={h} className={i < shaded ? 'fraction-fill' : 'fraction-empty'} />
+        ))}
+      </svg>
+    )
+  }
+  const r = size / 2
+  const slice = (i: number) => {
+    const a0 = (i / parts) * 2 * Math.PI - Math.PI / 2
+    const a1 = ((i + 1) / parts) * 2 * Math.PI - Math.PI / 2
+    const large = a1 - a0 > Math.PI ? 1 : 0
+    const [x0, y0] = [r + r * Math.cos(a0), r + r * Math.sin(a0)]
+    const [x1, y1] = [r + r * Math.cos(a1), r + r * Math.sin(a1)]
+    return `M${r},${r} L${x0},${y0} A${r},${r} 0 ${large} 1 ${x1},${y1} Z`
+  }
+  return (
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="fraction-shape" aria-hidden>
+      {Array.from({ length: parts }, (_, i) => (
+        <path key={i} d={slice(i)} className={i < shaded ? 'fraction-fill' : 'fraction-empty'} />
+      ))}
+    </svg>
+  )
 }

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { StatusBar } from '@/app/Shell'
 import { sayText, useCanSpeak } from '@/audio/say'
 import { type Lang, useLang, useT } from '@/i18n'
-import { ANIMALS, CONTINENTS, COUNTRIES, flagPhoto, LANGUAGES } from '@/lessons/data'
+import { ANIMALS, ANTARCTICA_TEXT, CONTINENTS, COUNTRIES, flagPhoto, LANGUAGES } from '@/lessons/data'
 import { lessonText } from '@/lessons/text'
 import { useArea } from '@/progress/usage'
 import { Emoji } from '@/shared/Emoji'
@@ -53,29 +53,33 @@ function entries(shelf: Shelf, lang: Lang, filter: string | null, t: ReturnType<
   }
   if (shelf === 'countries') {
     const T = lessonText(lang)
-    return COUNTRIES.filter((c) => !filter || c.continent === filter)
-      .map((c) => {
-        const region = T.countries[c.id].region
-        const continent = T.continents[c.continent]
-        const where = region === continent ? continent : `${region}, ${continent}`
-        const nearby = EARTH.filter((x) => x.countries?.includes(c.id)).map((x) => x.text[lang].name)
-        return {
-          id: c.id,
-          photo: flagPhoto(c.id),
-          name: T.countries[c.id].name,
-          sub: where,
-          flag: true,
-          map: { lat: c.lat, lon: c.lon },
-          lines: [
-            { label: t.library.continent, text: where },
-            { label: t.library.languages, text: c.languages.map((code) => LANGUAGES[code][lang]).join(', ') },
-            { label: t.library.peopleCalled, text: T.countries[c.id].demonym },
-            { label: t.library.capitalCity, text: T.countries[c.id].capital },
-            ...(nearby.length ? [{ label: t.library.foundNear, text: nearby.join(', ') }] : []),
-          ],
-        }
-      })
-      .sort((a, b) => a.name.localeCompare(b.name, lang))
+    const list: Entry[] = COUNTRIES.filter((c) => !filter || c.continent === filter).map((c) => {
+      const region = T.countries[c.id].region
+      const continent = T.continents[c.continent]
+      const where = region === continent ? continent : `${region}, ${continent}`
+      const nearby = EARTH.filter((x) => x.countries?.includes(c.id)).map((x) => x.text[lang].name)
+      return {
+        id: c.id,
+        photo: flagPhoto(c.id),
+        name: T.countries[c.id].name,
+        sub: where,
+        flag: true,
+        map: { lat: c.lat, lon: c.lon },
+        lines: [
+          { label: t.library.continent, text: where },
+          { label: t.library.languages, text: c.languages.map((code) => LANGUAGES[code][lang]).join(', ') },
+          { label: t.library.peopleCalled, text: T.countries[c.id].demonym },
+          { label: t.library.capitalCity, text: T.countries[c.id].capital },
+          ...(nearby.length ? [{ label: t.library.foundNear, text: nearby.join(', ') }] : []),
+        ],
+      }
+    })
+    // Antarctica has no countries of its own, so it's a one-off card: no flag, demonym or languages, just facts.
+    if (!filter || filter === 'Antarctica') {
+      const a = ANTARCTICA_TEXT[lang]
+      list.push({ id: 'antarctica', photo: earthPhoto('antarctica'), name: a.name, sub: T.continents.Antarctica, lines: [{ text: a.fact1 }, { text: a.fact2 }] })
+    }
+    return list.sort((a, b) => a.name.localeCompare(b.name, lang))
   }
   if (shelf === 'earth') {
     const T = lessonText(lang)

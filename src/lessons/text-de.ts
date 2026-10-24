@@ -37,6 +37,7 @@ export const LESSON_DE: LessonText = {
   roundTo: (n, to) => `Runde ${n} auf ${to === 10 ? 'Zehner' : 'Hunderter'}.`,
   percentOf: (p, n) => `Wie viel sind ${p} % von ${n}?`,
   calc: (e) => `Wie viel ist ${e}?`,
+  whatFraction: 'Welcher Bruchteil ist gefärbt?',
   animals: {
     fox: { name: 'Fuchs', fact: 'Dieses Tier hört so gut, dass es eine Maus unter dem Schnee hören kann.' },
     owl: { name: 'Eule', fact: 'Dieses Tier kann seinen Kopf sehr weit herumdrehen.' },
@@ -129,7 +130,7 @@ export const LESSON_DE: LessonText = {
     au: { name: 'Australien', capital: 'Canberra', region: 'Ozeanien', demonym: 'Australier' },
     nz: { name: 'Neuseeland', capital: 'Wellington', region: 'Ozeanien', demonym: 'Neuseeländer' },
   },
-  continents: { Europe: 'Europa', Africa: 'Afrika', Asia: 'Asien', 'North America': 'Nordamerika', 'South America': 'Südamerika', Oceania: 'Ozeanien' },
+  continents: { Europe: 'Europa', Africa: 'Afrika', Asia: 'Asien', 'North America': 'Nordamerika', 'South America': 'Südamerika', Oceania: 'Ozeanien', Antarctica: 'Antarktis' },
   skills: {
     'order-ops': 'Punkt vor Strich',
     squares: 'Quadratzahlen',
@@ -140,6 +141,8 @@ export const LESSON_DE: LessonText = {
     'place-value-1000': 'Stellenwert bis 1000',
     'round-10': 'Runden auf Zehner',
     'round-100': 'Runden auf Hunderter',
+    'fraction-shapes': 'Bruchteile einer Form',
+    'times-11-12-13': 'Das 11er-, 12er- und 13er-Einmaleins',
     'percent': 'Prozent von Mengen',
     'contractions': 'Englisch: Kurzformen (don’t, isn’t)',
     'comparatives': 'Englisch: Steigerung (fast, faster, fastest)',

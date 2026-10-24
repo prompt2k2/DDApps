@@ -8,6 +8,8 @@ export type Visual =
   | { kind: 'text'; text: string }
   /** A real photo (public/photos/…), with its subject for reports and screen readers. */
   | { kind: 'photo'; src: string; alt: string }
+  /** A shape split into equal parts, some shaded, for reading off a fraction (e.g. "3/8"). */
+  | { kind: 'fraction'; shape: 'circle' | 'bar'; parts: number; shaded: number }
 
 export interface Choice {
   label?: string

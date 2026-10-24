@@ -74,6 +74,11 @@ export const WORLD_RECORDS: FixedQuestion[] = [
     de: ['Wo ist der größte Regenwald der Welt?', 'Am Amazonas', 'In der Sahara', 'In den Alpen'],
     fr: ['Où se trouve la plus grande forêt tropicale du monde ?', 'En Amazonie', 'Au Sahara', 'Dans les Alpes'],
   },
+  {
+    en: ['Which continent has no countries of its own?', 'Antarctica', 'Europe', 'Asia'],
+    de: ['Welcher Kontinent hat keine eigenen Länder?', 'Die Antarktis', 'Europa', 'Asien'],
+    fr: ['Quel continent n’a aucun pays à lui ?', 'L’Antarctique', 'L’Europe', 'L’Asie'],
+  },
 ]
 
 export const SPACE: FixedQuestion[] = [

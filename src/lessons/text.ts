@@ -44,6 +44,7 @@ export interface LessonText {
   percentOf: (percent: number, n: number) => string
   /** A calculation shown as it is written ("3 + 4 × 2", "7²"). */
   calc: (expr: string) => string
+  whatFraction: string
   /** Animal names and facts by animal id. A fact never names the animal. */
   animals: Record<string, { name: string; fact: string }>
   countries: Record<string, { name: string; capital: string; region: string; demonym: string }>
@@ -86,9 +87,10 @@ export const LESSON_EN: LessonText = {
   roundTo: (n, to) => `Round ${n} to the nearest ${to === 10 ? 'ten' : 'hundred'}.`,
   percentOf: (p, n) => `What is ${p}% of ${n}?`,
   calc: (e) => `What is ${e}?`,
+  whatFraction: 'What fraction is shaded?',
   animals: Object.fromEntries(ANIMALS.map((a) => [a.id, { name: a.name, fact: a.fact }])),
   countries: Object.fromEntries(COUNTRIES.map((c) => [c.id, { name: c.name, capital: c.capital, region: c.region, demonym: c.demonym }])),
-  continents: { Europe: 'Europe', Africa: 'Africa', Asia: 'Asia', 'North America': 'North America', 'South America': 'South America', Oceania: 'Oceania' },
+  continents: { Europe: 'Europe', Africa: 'Africa', Asia: 'Asia', 'North America': 'North America', 'South America': 'South America', Oceania: 'Oceania', Antarctica: 'Antarctica' },
   // English skill names live on the ladder steps themselves (step.skill).
   skills: {},
 }

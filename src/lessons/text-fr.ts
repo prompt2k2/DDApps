@@ -37,6 +37,7 @@ export const LESSON_FR: LessonText = {
   roundTo: (n, to) => `Arrondis ${n} à la ${to === 10 ? 'dizaine' : 'centaine'} la plus proche.`,
   percentOf: (p, n) => `Combien font ${p} % de ${n} ?`,
   calc: (e) => `Combien font ${e} ?`,
+  whatFraction: 'Quelle fraction est coloriée ?',
   animals: {
     fox: { name: 'renard', fact: 'Cet animal entend si bien qu’il peut entendre une souris sous la neige.' },
     owl: { name: 'chouette', fact: 'Cet animal peut tourner la tête très loin.' },
@@ -129,7 +130,7 @@ export const LESSON_FR: LessonText = {
     au: { name: 'Australie', capital: 'Canberra', region: 'Océanie', demonym: 'Australiens' },
     nz: { name: 'Nouvelle-Zélande', capital: 'Wellington', region: 'Océanie', demonym: 'Néo-Zélandais' },
   },
-  continents: { Europe: 'Europe', Africa: 'Afrique', Asia: 'Asie', 'North America': 'Amérique du Nord', 'South America': 'Amérique du Sud', Oceania: 'Océanie' },
+  continents: { Europe: 'Europe', Africa: 'Afrique', Asia: 'Asie', 'North America': 'Amérique du Nord', 'South America': 'Amérique du Sud', Oceania: 'Océanie', Antarctica: 'Antarctique' },
   skills: {
     'order-ops': 'Priorités : × et ÷ avant + et −',
     squares: 'Les carrés',
@@ -140,6 +141,8 @@ export const LESSON_FR: LessonText = {
     'place-value-1000': 'La valeur des chiffres jusqu’à 1000',
     'round-10': 'Arrondir à la dizaine',
     'round-100': 'Arrondir à la centaine',
+    'fraction-shapes': 'Fractions d’une forme',
+    'times-11-12-13': 'Les tables de 11, 12 et 13',
     'percent': 'Pourcentages d’une quantité',
     'contractions': 'Anglais : formes contractées (don’t, isn’t)',
     'comparatives': 'Anglais : comparatifs (fast, faster, fastest)',

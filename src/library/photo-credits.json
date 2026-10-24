@@ -940,5 +940,11 @@
     "licence": "CC BY-SA 3.0",
     "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
     "source": "https://commons.wikimedia.org/wiki/File:Quartzite.jpg"
+  },
+  "antarctica": {
+    "author": "Pedro Szekely",
+    "licence": "CC BY-SA 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Antarctica_Landscape.jpg"
   }
 }

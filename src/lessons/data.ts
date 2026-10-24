@@ -101,7 +101,7 @@ export const WORDS: Word[] = [...ANIMALS.map((a) => ({ emoji: `animal-${a.id}`, 
 // Flags are real photos of the flag (public/flags/<id>.svg, from Wikimedia Commons; see flag-sources.json
 // and scripts/fetch-flags.mjs), not drawn by the app.
 
-export type Continent = 'Europe' | 'Africa' | 'Asia' | 'North America' | 'South America' | 'Oceania'
+export type Continent = 'Europe' | 'Africa' | 'Asia' | 'North America' | 'South America' | 'Oceania' | 'Antarctica'
 
 export interface Country {
   id: string
@@ -174,7 +174,30 @@ export const COUNTRIES: Country[] = [
   { id: 'nz', name: 'New Zealand', capital: 'Wellington', continent: 'Oceania', region: 'Oceania', demonym: 'New Zealanders', languages: ['en', 'mi'], lat: -41.29, lon: 174.78 },
 ]
 
-export const CONTINENTS: Continent[] = ['Europe', 'Africa', 'Asia', 'North America', 'South America', 'Oceania']
+// Antarctica has no countries, so it's never a quiz answer for "which continent is X in?" — only ever offered
+// as a (wrong) choice there. It still needs to exist as a continent: it's taught as one of the seven in
+// English-speaking schools (see the comment in world-more.ts), and it gets its own card in the Countries
+// library (built specially in LibraryScreen.tsx, since it has no capital, demonym or languages to show).
+/** Antarctica has no countries, so it isn't in COUNTRIES; this is its own small card in the library instead. */
+export const ANTARCTICA_TEXT: Record<'en' | 'de' | 'fr', { name: string; fact1: string; fact2: string }> = {
+  en: {
+    name: 'Antarctica',
+    fact1: 'No country owns Antarctica: scientists from many countries live there for a while, in research stations.',
+    fact2: 'It holds most of the world’s fresh water, frozen as ice. Only penguins and seals live there all year round.',
+  },
+  de: {
+    name: 'Antarktis',
+    fact1: 'Der Antarktis gehört kein Land: Wissenschaftler aus vielen Ländern leben dort eine Zeit lang in Forschungsstationen.',
+    fact2: 'Sie enthält das meiste Süßwasser der Welt, gefroren als Eis. Nur Pinguine und Robben leben dort das ganze Jahr über.',
+  },
+  fr: {
+    name: 'Antarctique',
+    fact1: 'Aucun pays ne possède l’Antarctique : des scientifiques de nombreux pays y vivent un moment, dans des stations de recherche.',
+    fact2: 'Elle contient la majeure partie de l’eau douce du monde, gelée en glace. Seuls les manchots et les phoques y vivent toute l’année.',
+  },
+}
+
+export const CONTINENTS: Continent[] = ['Europe', 'Africa', 'Asia', 'North America', 'South America', 'Oceania', 'Antarctica']
 
 /** Photo address of a country's flag (relative to the app): public/flags/<id>.svg. */
 export const flagPhoto = (id: string) => `flags/${id}.svg`

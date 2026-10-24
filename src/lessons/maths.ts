@@ -1,5 +1,5 @@
 import { FRUITS } from './data'
-import { int, numberQuestion, pick, type Random, shuffleIn } from './question'
+import { int, numberQuestion, others, pick, type Random, shuffleIn } from './question'
 import type { Step } from './step'
 import { type LessonText, lessonText } from './text'
 
@@ -42,6 +42,21 @@ function rounding(r: Random, T: LessonText, to: 10 | 100) {
     prompt: T.roundTo(n, to),
     visual: { kind: 'text' as const, text: `${n} ≈ ?` },
     ...shuffleIn(r, { label: String(right) }, wrong.map((v) => ({ label: String(v) }))),
+  }
+}
+
+/** A shape (pie slices or a bar of equal strips) with some parts shaded: read off the fraction shown. */
+function fractionShape(r: Random, T: LessonText) {
+  // At least 4 parts, so there are always two other shaded-counts to offer as wrong answers.
+  const parts = pick(r, [4, 5, 6, 8] as const)
+  const shaded = int(r, 1, parts - 1)
+  const shape: 'circle' | 'bar' = r() < 0.5 ? 'circle' : 'bar'
+  const label = (s: number) => `${s}/${parts}`
+  const wrong = others(r, Array.from({ length: parts - 1 }, (_, i) => i + 1), shaded, 2)
+  return {
+    prompt: T.whatFraction,
+    visual: { kind: 'fraction' as const, shape, parts, shaded },
+    ...shuffleIn(r, { label: label(shaded) }, wrong.map((s) => ({ label: label(s) }))),
   }
 }
 
@@ -152,6 +167,7 @@ export const MATHS: Step[] = [
     },
   },
   { id: 'round-10', stage: 3, skill: 'Rounding to the nearest 10', make: (r, l) => rounding(r, lessonText(l), 10) },
+  { id: 'fraction-shapes', stage: 3, skill: 'Fractions of a shape', make: (r, l) => fractionShape(r, lessonText(l)) },
   { id: 'times-all', stage: 4, skill: 'All times tables to 10 × 10', make: (r, l) => times(r, lessonText(l), [2, 3, 4, 5, 6, 7, 8, 9, 10]) },
   {
     id: 'add-sub-1000',
@@ -177,6 +193,7 @@ export const MATHS: Step[] = [
       return numberQuestion(r, lessonText(l).sum(t * n, '÷', t), n, { kind: 'text', text: `${t * n} ÷ ${t}` }, [1, -1, 2, -2])
     },
   },
+  { id: 'times-11-12-13', stage: 5, skill: 'The 11, 12 and 13 times tables', make: (r, l) => times(r, lessonText(l), [11, 12, 13]) },
   {
     id: 'times-2digit',
     stage: 5,

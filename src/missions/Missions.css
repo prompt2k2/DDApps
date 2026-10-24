@@ -1,4 +1,19 @@
 /* A mission: full screen over the Studio, big answers (at least 64 px), calm colours. */
+
+/* Fraction shapes (circle slices or a bar of strips), for "what fraction is shaded?". */
+.fraction-shape {
+  flex: none;
+}
+.fraction-fill {
+  fill: var(--accent);
+  stroke: rgb(0 0 0 / 25%);
+  stroke-width: 1;
+}
+.fraction-empty {
+  fill: var(--sunken);
+  stroke: rgb(0 0 0 / 25%);
+  stroke-width: 1;
+}
 .mission-screen {
   position: fixed;
   inset: 0;

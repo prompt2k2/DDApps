@@ -113,6 +113,7 @@ domain (simple government symbols) or released by their Commons uploader under a
 | earth/igneous.jpg | James St. John | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Basalt_12_(48674276333).jpg |
 | earth/sedimentary.jpg | Michael C. Rygel | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Channel-StellartonFm-CoalburnPit.JPG |
 | earth/metamorphic.jpg | No machine-readable author provided. Siim assumed (based on copyright claims). | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Quartzite.jpg |
+| earth/antarctica.jpg | Pedro Szekely | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Antarctica_Landscape.jpg |
 | maps/world.svg (not resized, original vector) | STyx | Public domain | https://commons.wikimedia.org/wiki/File:World_location_map.svg |
 | planets/mercury.jpg | NASA/Johns Hopkins University Applied Physics Laboratory/Arizona State University/Carnegie Institution of Washington | Public domain | https://commons.wikimedia.org/wiki/File:Mercury_in_true_color.jpg |
 | planets/venus.jpg | NASA/JPL-Caltech | Public domain | https://commons.wikimedia.org/wiki/File:Venus_from_Mariner_10.jpg |
