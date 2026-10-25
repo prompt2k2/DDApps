@@ -78,3 +78,10 @@ root.innerHTML = `
     <p><a href="https://github.com/Oluwasedago/kids-learning-studio">${esc(t.install.source)}</a></p>
   </footer>
 `
+
+// Registering here too (not just from the app page, src/main.tsx) means a device that opens this page first,
+// without ever having visited the app, still passes Chrome's installability check (manifest + a controlling
+// service worker) and gets offered "Install app" rather than only "Add to Home screen".
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').catch((err) => console.warn('service worker:', err))
+}
