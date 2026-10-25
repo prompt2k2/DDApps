@@ -269,10 +269,12 @@ export const en = {
     holidayTo: 'To',
   },
   apps: {
-    note: 'Other apps and sites, opened in the browser once earned time is left today (missions → stars → minutes, the same as games and videos). Once she leaves for one of these, time spent there is not tracked here.',
+    note: 'Other apps and sites, opened once earned time is left today (missions → stars → minutes, the same as games and videos). A plain one opens outside the app, where time spent is not tracked here. One marked "Keep her in the app" opens full screen instead, with time ticking down and cut off like a game — but most apps from the Play Store, and many sites, do not allow this; try it and switch it back off if the page stays blank.',
     namePlaceholder: 'App name',
     linkPlaceholder: 'https://…',
     none: 'No apps added yet. A parent can add some on the parent screen.',
+    embedLabel: 'Keep her in the app',
+    embedNote: 'For a site that allows it, this is the only way minutes spent there count against today\'s earned time. For everything else, pair this with Google Family Link\'s own screen-time limits on the tablet.',
   },
   parent: {
     enterPin: 'Parent PIN',

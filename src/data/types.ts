@@ -49,11 +49,14 @@ export interface RoutineHoliday {
   label: string
 }
 
-/** An approved app or site (Mathletics, a game site…), opened in the device's own browser/app when tapped. */
+/** An approved app or site (Mathletics, a game site…). */
 export interface AppLink {
   id: string
   name: string
   url: string
+  /** Shown inside the app (full screen, time ticking and cut off like a game) instead of leaving to open it.
+   *  Only some sites allow this (most apps and many sites refuse to be shown inside another page). */
+  embed?: boolean
 }
 
 /** The ids the app ships with, matching a paper daily checklist: hygiene, school uniform, reading, screen time. */

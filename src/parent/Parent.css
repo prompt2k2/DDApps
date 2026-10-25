@@ -270,6 +270,14 @@ button.danger {
   min-width: 3rem;
   padding: 0;
 }
+.link-embed {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
 .birthday-add {
   display: grid;
   grid-template-columns: 1fr auto auto auto;

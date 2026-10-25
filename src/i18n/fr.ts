@@ -265,10 +265,12 @@ export const fr: Strings = {
     holidayTo: 'Au',
   },
   apps: {
-    note: 'D’autres applications et sites, ouverts dans le navigateur tant qu’il reste du temps gagné aujourd’hui (missions → étoiles → minutes, comme les jeux et les vidéos). Une fois qu’elle les quitte pour l’une d’elles, le temps passé là-bas n’est plus compté ici.',
+    note: 'D’autres applications et sites, ouverts tant qu’il reste du temps gagné aujourd’hui (missions → étoiles → minutes, comme les jeux et les vidéos). Une application ordinaire s’ouvre hors de l’application, où le temps passé n’est pas compté ici. Une application marquée « Garder dans l’application » s’ouvre à la place en plein écran, avec le temps qui défile et s’arrête comme pour un jeu — mais la plupart des applications du Play Store, et beaucoup de sites, ne le permettent pas ; essayez et désactivez si la page reste vide.',
     namePlaceholder: 'Nom de l’application',
     linkPlaceholder: 'https://…',
     none: 'Aucune application ajoutée. Un parent peut en ajouter sur l’écran parent.',
+    embedLabel: 'Garder dans l’application',
+    embedNote: 'Seulement pour un site qui le permet, les minutes passées là-bas comptent contre le temps gagné aujourd’hui. Pour tout le reste, mieux vaut combiner avec les propres limites de temps d’écran de Google Family Link sur la tablette.',
   },
   parent: {
     enterPin: 'PIN parent',

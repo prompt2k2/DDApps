@@ -341,14 +341,20 @@ function LinkList({
   check,
   onAdd,
   onRemove,
+  embedLabel,
+  onToggleEmbed,
 }: {
-  items: { id: string; name: string; detail: string }[]
+  items: { id: string; name: string; detail: string; embed?: boolean }[]
   namePlaceholder: string
   linkPlaceholder: string
   /** Returns an error text, or null when the link is fine. */
   check: (link: string) => string | null
   onAdd: (name: string, link: string) => void
   onRemove: (id: string) => void
+  /** When set, each item gets a checkbox to switch it between opening outside the app and showing inside it
+   *  (time ticking and cut off like a game). Only some sites allow the second one. */
+  embedLabel?: string
+  onToggleEmbed?: (id: string, embed: boolean) => void
 }) {
   const t = useT()
   const [name, setName] = useState('')
@@ -370,6 +376,11 @@ function LinkList({
             <span>
               <b>{x.name}</b> <small className="muted">{x.detail}</small>
             </span>
+            {onToggleEmbed && (
+              <label className="link-embed">
+                <input type="checkbox" checked={!!x.embed} onChange={(e) => onToggleEmbed(x.id, e.target.checked)} /> {embedLabel}
+              </label>
+            )}
             <button className="secondary" aria-label={t.common.remove} onClick={() => onRemove(x.id)}>
               <Trash2 />
             </button>
@@ -470,13 +481,16 @@ function AppsEditor() {
     <div className="editor">
       <small className="muted">{t.apps.note}</small>
       <LinkList
-        items={settings.apps.map((a) => ({ id: a.id, name: a.name, detail: a.url }))}
+        items={settings.apps.map((a) => ({ id: a.id, name: a.name, detail: a.url, embed: a.embed }))}
         namePlaceholder={t.apps.namePlaceholder}
         linkPlaceholder={t.apps.linkPlaceholder}
         check={(link) => (/^https:\/\/\S+$/.test(link) ? null : t.media.notHttps)}
         onAdd={(name, url) => updateSettings((s) => ({ ...s, apps: [...s.apps, { id: id(), name, url }] }))}
         onRemove={(key) => updateSettings((s) => ({ ...s, apps: s.apps.filter((a) => a.id !== key) }))}
+        embedLabel={t.apps.embedLabel}
+        onToggleEmbed={(key, embed) => updateSettings((s) => ({ ...s, apps: s.apps.map((a) => (a.id === key ? { ...a, embed } : a)) }))}
       />
+      <small className="muted">{t.apps.embedNote}</small>
     </div>
   )
 }

@@ -265,10 +265,12 @@ export const de: Strings = {
     holidayTo: 'Bis',
   },
   apps: {
-    note: 'Andere Apps und Seiten, geöffnet im Browser, solange heute noch verdiente Zeit übrig ist (Missionen → Sterne → Minuten, wie bei Spielen und Videos). Sobald sie dorthin wechselt, wird die Zeit dort nicht mehr gezählt.',
+    note: 'Andere Apps und Seiten, geöffnet, solange heute noch verdiente Zeit übrig ist (Missionen → Sterne → Minuten, wie bei Spielen und Videos). Eine gewöhnliche öffnet außerhalb der App, wo die Zeit dort nicht gezählt wird. Eine mit „In der App behalten" öffnet stattdessen im Vollbild, mit ablaufender Zeit wie bei einem Spiel — aber die meisten Apps aus dem Play Store und viele Seiten lassen das nicht zu; einfach ausprobieren und wieder ausschalten, falls die Seite leer bleibt.',
     namePlaceholder: 'Name der App',
     linkPlaceholder: 'https://…',
     none: 'Noch keine Apps hinzugefügt. Ein Elternteil kann welche auf dem Elternbildschirm hinzufügen.',
+    embedLabel: 'In der App behalten',
+    embedNote: 'Nur bei einer Seite, die das zulässt, zählen dort verbrachte Minuten gegen die heute verdiente Zeit. Für alles andere am besten mit den eigenen Bildschirmzeit-Grenzen von Google Family Link auf dem Tablet kombinieren.',
   },
   parent: {
     enterPin: 'Eltern-PIN',

@@ -48,8 +48,8 @@ export async function updateNow(): Promise<'reloading' | 'newest' | 'offline'> {
   return 'reloading'
 }
 
-/** A film is open (the video player's frame is on screen). */
-const filmOpen = () => document.querySelector('iframe.video-frame') !== null
+/** A film or an embedded app is open (its frame is on screen). */
+const filmOpen = () => document.querySelector('iframe.video-frame, iframe.app-embed') !== null
 
 /** Reloads into a new version once one is out and `quiet` is true (no touch for a while, nothing playing). */
 export function useAutoUpdate(quiet: boolean) {
